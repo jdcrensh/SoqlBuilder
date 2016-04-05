@@ -1,7 +1,7 @@
-global class OrCondition extends ConditionGroup{
-    
-    global OrCondition(){
-        super('OR');
-    }
-    
+global class OrCondition extends ConditionGroup {
+
+	global OrCondition() {
+		super('OR');
+	}
+	
 }

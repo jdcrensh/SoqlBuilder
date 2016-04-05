@@ -1,7 +1,7 @@
 global virtual interface Soqlable {
 
-    String toSoql();
-    
-    String toSoql(SoqlOptions options);
-
+	String toSoql();
+	
+	String toSoql(SoqlOptions options);
+	
 }

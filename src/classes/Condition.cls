@@ -1,1 +1,1 @@
-global virtual interface Condition extends Soqlable{}
+global virtual interface Condition extends Soqlable {}
