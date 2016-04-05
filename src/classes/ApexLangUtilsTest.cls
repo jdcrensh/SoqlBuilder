@@ -4829,14 +4829,6 @@ private class ApexLangUtilsTest {
         System.assertNotEquals(null,ApexLangUtils.toString(account));
     }*/
         
-    private static testmethod void testToStringFieldDescribeLimitsReached(){
-        //test: global static String toString(SObject obj){
-        for(Integer i = 0; i < Limits.getLimitFieldsDescribes(); i++){
-               Map<String, Schema.SObjectField> m = Schema.sObjectType.Account.fields.getMap();        
-        }
-        System.assertEquals(null,ApexLangUtils.toString(new Account(name='Acme')));
-    }
-    
     /*private static testmethod void testGetCachedDescribe(){
         //test: global static Schema.DescribeSObjectResult getCachedDescribe(SObject obj){
         Schema.DescribeSObjectResult desc1 = ApexLangUtils.getCachedDescribe(new Account());
