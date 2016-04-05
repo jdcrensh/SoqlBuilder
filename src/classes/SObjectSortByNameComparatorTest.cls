@@ -9,10 +9,9 @@
  *      http://www.apache.org/licenses/LICENSE-2.0
  * ============================================================
  */
-@IsTest
-private class SObjectSortByNameComparatorTest {
+@isTest class SObjectSortByNameComparatorTest {
 
-    private static testmethod void testCompareBadInput(){
+    @isTest static void testCompareBadInput(){
         ISObjectComparator comparator = new SObjectSortByNameComparator();
         System.assertEquals(-1,comparator.compare(null,new Account(name='test123'))); 
         System.assertEquals(0,comparator.compare(null,null)); 
@@ -20,7 +19,7 @@ private class SObjectSortByNameComparatorTest {
         
     }
     
-    private static testmethod void testCompareWithAccounts(){
+    @isTest static void testCompareWithAccounts(){
         Account a1 = new Account(name='abc');
         Account a2 = new Account(name='efg');
         ISObjectComparator comparator = new SObjectSortByNameComparator();
@@ -29,7 +28,7 @@ private class SObjectSortByNameComparatorTest {
         System.assert(0 < comparator.compare(a2,a1)); 
     }
     
-    private static testmethod void testCompareWithContacts(){
+    @isTest static void testCompareWithContacts(){
         Opportunity o1 = new Opportunity(name='abc');
         Opportunity o2 = new Opportunity(name='efg');
         ISObjectComparator comparator = new SObjectSortByNameComparator();

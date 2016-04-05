@@ -1,7 +1,6 @@
-@IsTest
-private class SoqlUtilsTest {
+@isTest class SoqlUtilsTest {
     
-    private static testmethod void testInvalidValue(){
+    @isTest static void testInvalidValue(){
         Boolean exceptionCaught = false;
         try{
             SoqlUtils.toLiteral(new DecimalRange(0,1));
@@ -11,56 +10,56 @@ private class SoqlUtilsTest {
         System.assert(exceptionCaught == true,'IllegalArgumentException not thrown');
     }
 
-    private static testmethod void testSoqlableValue(){
+    @isTest static void testSoqlableValue(){
         System.assertEquals(
             'NEXT_N_FISCAL_QUARTERS:2',
             SoqlUtils.toLiteral(new DateFormula().next(2,UnitOfTime.FiscalQuarter))
         );
     }
 
-    private static testmethod void testNullValue(){
+    @isTest static void testNullValue(){
     	Object value = null;
         System.assertEquals('null',SoqlUtils.toLiteral(value));   
     }
 
-    private static testmethod void testStringValue(){
+    @isTest static void testStringValue(){
         System.assertEquals('\'acme\'',SoqlUtils.toLiteral('acme'));   
     }
 
-    private static testmethod void testBooleanValue(){
+    @isTest static void testBooleanValue(){
         System.assertEquals('true',SoqlUtils.toLiteral(true));   
         System.assertEquals('false',SoqlUtils.toLiteral(false));   
     }
 
-    private static testmethod void testIntegerValue(){
+    @isTest static void testIntegerValue(){
         Integer i = 1;
         System.assertEquals('1',SoqlUtils.toLiteral(i));   
     }
 
-    private static testmethod void testLongValue(){
+    @isTest static void testLongValue(){
         Long l = 1;
         System.assertEquals('1',SoqlUtils.toLiteral(l));   
     }
 
-    private static testmethod void testDoubleValue(){
+    @isTest static void testDoubleValue(){
         Double d = 1.1;
         System.assertEquals('1.1',SoqlUtils.toLiteral(d));   
     }
 
-    private static testmethod void testDecimalValue(){
+    @isTest static void testDecimalValue(){
         Decimal d = 1.1;
         System.assertEquals('1.1',SoqlUtils.toLiteral(d));   
     }
 
-    private static testmethod void testDateValue(){
+    @isTest static void testDateValue(){
         System.assertEquals('1960-02-17',SoqlUtils.toLiteral(Date.newinstance(1960, 2, 17)));   
     }
 
-    private static testmethod void testDatetimeValue(){
+    @isTest static void testDatetimeValue(){
         System.assertEquals('2008-12-01T12:00:00Z',SoqlUtils.toLiteral(Datetime.newInstance(2008, 12, 1)));   
     }
     
-    private static testmethod void testPrimitivesToSoqlLiterals(){
+    @isTest static void testPrimitivesToSoqlLiterals(){
     	final List<Object> values = new List<Object>{1,'test123',1.1,true,null};
     	final List<String> literals = SoqlUtils.toLiteral(values);
         System.assertEquals('1',literals.get(0));
@@ -70,42 +69,42 @@ private class SoqlUtilsTest {
         System.assertEquals('null',literals.get(4));
     }
 
-    private static testmethod void testEquals_1(){
+    @isTest static void testEquals_1(){
         System.assertEquals(false,SoqlUtils.equals(
            'select id from account',
            'SELECT id FROM contact'
         ));
     }
 
-    private static testmethod void testEquals_2(){
+    @isTest static void testEquals_2(){
         System.assertEquals(true,SoqlUtils.equals(
            'select id from account',
            'SELECT id FROM account'
         ));
     }
 
-    private static testmethod void testEquals_3(){
+    @isTest static void testEquals_3(){
         System.assertEquals(false,SoqlUtils.equals(
            'select id,name from account',
            'SELECT id FROM account'
         ));
     }
 
-    private static testmethod void testEquals_4(){
+    @isTest static void testEquals_4(){
         System.assertEquals(true,SoqlUtils.equals(
            '  select    ispartner,rating,id, name    from   account  ',
            ' SELECT  name,rating,  ispartner,id  FROM   account   '
         ));
     }
 
-    private static testmethod void testEquals_5(){
+    @isTest static void testEquals_5(){
         System.assertEquals(false,SoqlUtils.equals(
            'xxx',
            ' SELECT  name,rating,  ispartner,id  FROM   account   '
         ));
     }
 
-    private static testmethod void testAssertEquals(){
+    @isTest static void testAssertEquals(){
         SoqlUtils.assertEquals(
            'select id,name from account',
            'SELECT id,name FROM account'

@@ -1,13 +1,12 @@
-@IsTest
-private class SoqlBuilderTest {
+@isTest class SoqlBuilderTest {
 
-    private static testmethod void testLimit(){
+    @isTest static void testLimit(){
         SoqlUtils.assertEquals(
             'SELECT id FROM account LIMIT 1000',
             new SoqlBuilder().selectx('id').fromx('account').limitx(1000).toSoql());   
     }
 
-    private static testmethod void testNoObjectName(){
+    @isTest static void testNoObjectName(){
         Boolean exceptionCaught = false;
         try{
             new SoqlBuilder().toSoql();
@@ -17,7 +16,7 @@ private class SoqlBuilderTest {
         System.assert(exceptionCaught == true,'IllegalStateException not thrown');
     }
 
-    private static testmethod void testBadField1(){
+    @isTest static void testBadField1(){
         Boolean exceptionCaught = false;
         try{
             String aNull = null;
@@ -28,7 +27,7 @@ private class SoqlBuilderTest {
         System.assert(exceptionCaught == true,'IllegalArgumentException not thrown');
     }
 
-    private static testmethod void testBadField2(){
+    @isTest static void testBadField2(){
         Boolean exceptionCaught = false;
         try{
             List<Object> anObjectList = new List<Object>{new DecimalRange(0,1)};
@@ -39,7 +38,7 @@ private class SoqlBuilderTest {
         System.assert(exceptionCaught == true,'IllegalArgumentException not thrown');
     }
 
-    private static testmethod void testBasicSelect(){
+    @isTest static void testBasicSelect(){
         SoqlUtils.assertEquals(
             'SELECT id,name FROM account WHERE name like \'%acme%\'',
             new SoqlBuilder()
@@ -49,7 +48,7 @@ private class SoqlBuilderTest {
                 .toSoql());   
     }
 
-    private static testmethod void testOption_wildcardStringsInLikeOperators(){
+    @isTest static void testOption_wildcardStringsInLikeOperators(){
         SoqlUtils.assertEquals(
             'SELECT id FROM account WHERE name like \'%acme%\'',
             new SoqlBuilder()
@@ -58,7 +57,7 @@ private class SoqlBuilderTest {
                 .toSoql(new SoqlOptions().wildcardStringsInLikeOperators()));   
     }
 
-    private static testmethod void testOption_wildcardStringsInLikeOperatorsAlreadyWildcarded(){
+    @isTest static void testOption_wildcardStringsInLikeOperatorsAlreadyWildcarded(){
         SoqlUtils.assertEquals(
             'SELECT id FROM account WHERE name like \'%acme%\'',
             new SoqlBuilder()
@@ -67,7 +66,7 @@ private class SoqlBuilderTest {
                 .toSoql(new SoqlOptions().wildcardStringsInLikeOperators()));   
     }
 
-    private static testmethod void testOption_doNotWildcardStringsInLikeOperators(){
+    @isTest static void testOption_doNotWildcardStringsInLikeOperators(){
         SoqlUtils.assertEquals(
             'SELECT id FROM account WHERE name like \'acme\'',
             new SoqlBuilder()
@@ -76,7 +75,7 @@ private class SoqlBuilderTest {
                 .toSoql(new SoqlOptions().doNotWildcardStringsInLikeOperators()));   
     }
 
-    private static testmethod void testOption_escapeSingleQuotes(){
+    @isTest static void testOption_escapeSingleQuotes(){
         SoqlUtils.assertEquals(
             'SELECT id FROM account WHERE name like \'Bill\\\'s Chop Shop\'',
             new SoqlBuilder()
@@ -85,7 +84,7 @@ private class SoqlBuilderTest {
                 .toSoql(new SoqlOptions().escapeSingleQuotes()));   
     }
 
-    private static testmethod void testOption_doNotEscapeSingleQuotes(){
+    @isTest static void testOption_doNotEscapeSingleQuotes(){
         SoqlUtils.assertEquals(
             'SELECT id FROM account WHERE name like \'Bill\'s Chop Shop\'',
             new SoqlBuilder()
@@ -94,7 +93,7 @@ private class SoqlBuilderTest {
                 .toSoql(new SoqlOptions().doNotEscapeSingleQuotes()));   
     }
 
-    private static testmethod void testNestedConditions(){
+    @isTest static void testNestedConditions(){
         SoqlUtils.assertEquals(
             'SELECT id,name FROM account WHERE ((name like \'%acme%\' OR description = \'yo\') AND ispartner = true) ORDER BY name DESC LIMIT 500',
             new SoqlBuilder()
@@ -113,7 +112,7 @@ private class SoqlBuilderTest {
                 .toSoql());   
     }
 
-    private static testmethod void testOrderBy1(){
+    @isTest static void testOrderBy1(){
         SoqlUtils.assertEquals(
             'SELECT id FROM account ORDER BY name',
             new SoqlBuilder()
@@ -122,7 +121,7 @@ private class SoqlBuilderTest {
                 .toSoql());   
     }
 
-    private static testmethod void testOrderBy2(){
+    @isTest static void testOrderBy2(){
         SoqlUtils.assertEquals(
             'SELECT id FROM account ORDER BY name ASC NULLS LAST, rating DESC, industry DESC NULLS FIRST',
             new SoqlBuilder()
@@ -134,7 +133,7 @@ private class SoqlBuilderTest {
                 .toSoql());   
     }
 
-    private static testmethod void testANullOrderBy(){
+    @isTest static void testANullOrderBy(){
         SoqlUtils.assertEquals(
             'SELECT id FROM account ORDER BY name',
             new SoqlBuilder()
@@ -146,7 +145,7 @@ private class SoqlBuilderTest {
     }
 
 
-    private static testmethod void testGroupBy(){
+    @isTest static void testGroupBy(){
         SoqlUtils.assertEquals(
             'SELECT id FROM account GROUP BY name',
             new SoqlBuilder()
@@ -155,7 +154,7 @@ private class SoqlBuilderTest {
                 .toSoql());   
     }
 
-    private static testmethod void testParentToChildQuery1(){
+    @isTest static void testParentToChildQuery1(){
         SoqlUtils.assertEquals(
             'SELECT ID, Name, toLabel(Rating), (SELECT FirstName, LastName FROM Contacts) FROM Account',
             new SoqlBuilder()
@@ -171,7 +170,7 @@ private class SoqlBuilderTest {
                 .toSoql());   
     }
 
-    private static testmethod void testParentToChildQuery2(){
+    @isTest static void testParentToChildQuery2(){
         SoqlUtils.assertEquals(
             'SELECT    ID, Name,    toLabel(Rating), (SELECT FirstName, LastName FROM Contacts) FROM Account',
             new SoqlBuilder()
@@ -190,7 +189,7 @@ private class SoqlBuilderTest {
                 .toSoql());   
     }
 
-    private static testmethod void testSelectCount1(){
+    @isTest static void testSelectCount1(){
         SoqlUtils.assertEquals(
             'SELECT count() from Contact c, c.Account a WHERE a.name = \'MyriadPubs\'',
             new SoqlBuilder()
@@ -200,7 +199,7 @@ private class SoqlBuilderTest {
                 .toSoql());   
     }
     
-    private static testmethod void testSelectCount2(){
+    @isTest static void testSelectCount2(){
         SoqlUtils.assertEquals(
             'SELECT count() FROM Account WHERE Name LIKE \'a%\'',
             new SoqlBuilder()
@@ -211,7 +210,7 @@ private class SoqlBuilderTest {
     }
     
     
-    private static testmethod void testSelectCountWithArg(){
+    @isTest static void testSelectCountWithArg(){
         SoqlUtils.assertEquals(
             'SELECT count(Id) FROM Account WHERE Name LIKE \'a%\'',
             new SoqlBuilder()
@@ -221,7 +220,7 @@ private class SoqlBuilderTest {
                 .toSoql());     
     }  
     
-    private static testmethod void testSelectAverage(){
+    @isTest static void testSelectAverage(){
         SoqlUtils.assertEquals(
             'SELECT AVG(Amount) FROM Account WHERE Name LIKE \'a%\'',
             new SoqlBuilder()
@@ -232,7 +231,7 @@ private class SoqlBuilderTest {
     }    
 
 
-    private static testmethod void testSelectMax(){  
+    @isTest static void testSelectMax(){  
         SoqlUtils.assertEquals(
             'SELECT Max(Amount) FROM Account WHERE Name LIKE \'a%\'',
             new SoqlBuilder()
@@ -242,7 +241,7 @@ private class SoqlBuilderTest {
                 .toSoql());     
     }  
 
-    private static testmethod void testSelectMin(){
+    @isTest static void testSelectMin(){
         SoqlUtils.assertEquals(
             'SELECT Min(Amount) FROM Account WHERE Name LIKE \'a%\'',
             new SoqlBuilder()
@@ -252,7 +251,7 @@ private class SoqlBuilderTest {
                 .toSoql());     
     }  
 
-    private static testmethod void testSelectSumx(){
+    @isTest static void testSelectSumx(){
         SoqlUtils.assertEquals(
             'SELECT Sum(Amount) FROM Account WHERE Name LIKE \'a%\'',
             new SoqlBuilder()
@@ -263,7 +262,7 @@ private class SoqlBuilderTest {
     }  
     
     
-    private static testmethod void testSelectNullCondition(){
+    @isTest static void testSelectNullCondition(){
         SoqlUtils.assertEquals(
             'SELECT Id FROM Case WHERE Contact.Lastname = null',
             new SoqlBuilder()
@@ -272,7 +271,7 @@ private class SoqlBuilderTest {
                 .toSoql());   
     }
     
-    private static testmethod void testIncludes(){
+    @isTest static void testIncludes(){
         SoqlUtils.assertEquals(
             'SELECT Id, MSP1__c from CustObj__c WHERE MSP1__c INCLUDES (\'AAA;BBB\',\'CCC\')',
             new SoqlBuilder()
@@ -282,7 +281,7 @@ private class SoqlBuilderTest {
                 .toSoql());   
     }
     
-    private static testmethod void testExcludes(){
+    @isTest static void testExcludes(){
         SoqlUtils.assertEquals(
             'SELECT Id, MSP1__c from CustObj__c WHERE MSP1__c EXCLUDES (\'AAA;BBB\',\'CCC\')',
             new SoqlBuilder()
@@ -292,7 +291,7 @@ private class SoqlBuilderTest {
                 .toSoql());   
     }
     
-    private static testmethod void testIn(){
+    @isTest static void testIn(){
         SoqlUtils.assertEquals(
             'SELECT id FROM ACCOUNT WHERE BillingState IN (\'California\',\'New York\')',
             new SoqlBuilder()
@@ -301,7 +300,7 @@ private class SoqlBuilderTest {
                 .toSoql());   
     }
     
-    private static testmethod void testNotIn(){
+    @isTest static void testNotIn(){
         SoqlUtils.assertEquals(
             'SELECT id FROM ACCOUNT WHERE BillingState NOT IN (\'California\',\'New York\')',
             new SoqlBuilder()
@@ -310,7 +309,7 @@ private class SoqlBuilderTest {
                 .toSoql());   
     }
     
-    private static testmethod void testDateFormula_NEXT_N_FISCAL_QUARTERS(){
+    @isTest static void testDateFormula_NEXT_N_FISCAL_QUARTERS(){
         SoqlUtils.assertEquals(
             'SELECT Id FROM Account WHERE CreatedDate < NEXT_N_FISCAL_QUARTERS:6',
             new SoqlBuilder()
@@ -319,7 +318,7 @@ private class SoqlBuilderTest {
                 .toSoql());
     }
 
-    private static testmethod void testDateFormula_TOMORROW(){
+    @isTest static void testDateFormula_TOMORROW(){
         SoqlUtils.assertEquals(
             'SELECT Id FROM Opportunity WHERE CloseDate = TOMORROW',
             new SoqlBuilder()
@@ -328,7 +327,7 @@ private class SoqlBuilderTest {
                 .toSoql());
     }
 
-    private static testmethod void test_EQUALS_1(){
+    @isTest static void test_EQUALS_1(){
         SoqlUtils.assertEquals(
             'SELECT name,employees FROM account WHERE employees = 10',
             new SoqlBuilder()
@@ -339,7 +338,7 @@ private class SoqlBuilderTest {
                 .toSoql());
     }
 
-    private static testmethod void test_EQUALS_2(){
+    @isTest static void test_EQUALS_2(){
         SoqlUtils.assertEquals(
             'SELECT name,employees FROM account WHERE employees = 10',
             new SoqlBuilder()
@@ -350,7 +349,7 @@ private class SoqlBuilderTest {
                 .toSoql());
     }
 
-    private static testmethod void test_EQUALS_3(){
+    @isTest static void test_EQUALS_3(){
         SoqlUtils.assertEquals(
             'SELECT name,employees FROM account WHERE employees = 10',
             new SoqlBuilder()
@@ -360,7 +359,7 @@ private class SoqlBuilderTest {
                 .toSoql());
     }
 
-    private static testmethod void test_INX_1(){
+    @isTest static void test_INX_1(){
         SoqlUtils.assertEquals(
             'SELECT id,industry FROM account WHERE industry in (\'Agriculture\',\'Apparel\')',
             new SoqlBuilder()
@@ -370,7 +369,7 @@ private class SoqlBuilderTest {
                 .toSoql());
     }
 
-    private static testmethod void test_INX_2(){
+    @isTest static void test_INX_2(){
         SoqlUtils.assertEquals(
             'SELECT id,industry FROM account WHERE industry in (\'Agriculture\',\'Apparel\')',
             new SoqlBuilder()
@@ -380,7 +379,7 @@ private class SoqlBuilderTest {
                 .toSoql());
     }
 
-    private static testmethod void test_INX_3(){
+    @isTest static void test_INX_3(){
         SoqlUtils.assertEquals(
             'SELECT id,industry FROM account WHERE industry in (\'Agriculture\',\'Apparel\')',
             new SoqlBuilder()
@@ -390,7 +389,7 @@ private class SoqlBuilderTest {
                 .toSoql());
     }
 
-    private static testmethod void testBasicSemiJoin(){
+    @isTest static void testBasicSemiJoin(){
         System.assertEquals(
             'SELECT id FROM Account WHERE ID IN '
             +'(SELECT AccountId FROM Opportunity WHERE StageName = \'Closed Lost\')',
@@ -404,7 +403,7 @@ private class SoqlBuilderTest {
                 .toSoql());
     }
     
-    private static testmethod void testDuplicateFields(){
+    @isTest static void testDuplicateFields(){
         System.assertEquals(
             'SELECT name FROM Account',
             new SoqlBuilder()

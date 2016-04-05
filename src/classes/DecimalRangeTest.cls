@@ -9,10 +9,9 @@
  *      http://www.apache.org/licenses/LICENSE-2.0
  * ============================================================
  */
-@IsTest
-private class DecimalRangeTest {
+@isTest class DecimalRangeTest {
     
-    private static testmethod void testContains(){
+    @isTest static void testContains(){
         assertContains(new DecimalRange(0),0,true);
         assertContains(new DecimalRange(-1,1),-1.1,false);
         assertContains(new DecimalRange(-1,1),-0.5,true);
@@ -27,7 +26,7 @@ private class DecimalRangeTest {
             + ').contains(' + aNumber + ') returned ' + actual);
     }
 
-    private static testmethod void testContainsRange(){
+    @isTest static void testContainsRange(){
         assertContainsRange(new DecimalRange(0),new DecimalRange(0),true);
         assertContainsRange(new DecimalRange(0,1),new DecimalRange(0,1),true);
         assertContainsRange(new DecimalRange(1.5,2.5),new DecimalRange(4,5),false);
@@ -42,7 +41,7 @@ private class DecimalRangeTest {
             + ').contains(' + (range2==null ? '' : range2.toAString()) + ') returned ' + actual);
     }
 
-    private static testmethod void testOverlaps(){
+    @isTest static void testOverlaps(){
         assertOverlaps(new DecimalRange(0),new DecimalRange(0),true);
         assertOverlaps(new DecimalRange(-1,1),new DecimalRange(0,1),true);
         assertOverlaps(new DecimalRange(-1,1),new DecimalRange(1.1,1.5),false);
@@ -57,7 +56,7 @@ private class DecimalRangeTest {
             + ').overlaps(' + (range2==null ? '' : range2.toAString()) + ') returned ' + actual);
     }
 
-    private static testmethod void testMin(){
+    @isTest static void testMin(){
         assertMin(new DecimalRange(0),0);
         assertMin(new DecimalRange(-1.5,1.5),-1.5);
         assertMin(new DecimalRange(1.5,-1.5),-1.5);
@@ -69,7 +68,7 @@ private class DecimalRangeTest {
             + ').getMinimum() returned ' + actual);
     }
 
-    private static testmethod void testMax(){
+    @isTest static void testMax(){
         assertMax(new DecimalRange(0),0);
         assertMax(new DecimalRange(-1.5,1.5),1.5);
         assertMax(new DecimalRange(1.5,-1.5),1.5);
@@ -81,13 +80,13 @@ private class DecimalRangeTest {
             + ').getMaximum() returned ' + actual);
     }
 
-    private static testmethod void testNullsConstructor1(){
+    @isTest static void testNullsConstructor1(){
         Boolean exceptionCaught = false;
         try{ new DecimalRange(null); }catch(IllegalArgumentException e){ exceptionCaught = true; }
         System.assert(exceptionCaught,'Call to \'new DecimalRange(null)\' did not throw IllegalArgumentException');
     }
     
-    private static testmethod void testNullsConstructor2(){
+    @isTest static void testNullsConstructor2(){
         Boolean exceptionCaught = false;
         try{ new DecimalRange(null,null); }catch(IllegalArgumentException e){ exceptionCaught = true; }
         System.assert(exceptionCaught,'Call to \'new DecimalRange(null,null)\' did not throw IllegalArgumentException');

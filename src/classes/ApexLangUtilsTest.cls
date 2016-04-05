@@ -1,7 +1,6 @@
 /*Test ApexLangUtils*/
 
-@IsTest 
-private class ApexLangUtilsTest {
+@isTest  class ApexLangUtilsTest {
     /* Character tests */
     
     private static String CHARS_ASCII_CONTROL = '\n\t\r\f';        
@@ -13,7 +12,7 @@ private class ApexLangUtilsTest {
     private static String CHARS_NON_ASCII = '€‚ƒ„…†‡ˆ‰Š‹ŒŽ‘’“”•–—˜™š›œžŸ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþ';
     private static String CHARS_ASCII_NON_PRINTABLE = CHARS_ASCII_CONTROL + CHARS_NON_ASCII;
 
-    private static testmethod void testValidateChar(){
+    @isTest static void testValidateChar(){
         final String[] badCharStrings = new String[]{'','AB'};
         for(String badCharString : badCharStrings){
             try{
@@ -24,7 +23,7 @@ private class ApexLangUtilsTest {
         ApexLangUtils.validateChar('B');
     } 
     
-    private static testmethod void testIsUpperCase(){
+    @isTest static void testIsUpperCase(){
         final String UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         for(Integer i = 0; i < UPPER.length(); i++){
             assertIsUpperCase(UPPER.substring(i,i+1), true);
@@ -40,7 +39,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.isUpperCase(\'' + aCharacter + '\') returned ' + actual);
     }
     
-    private static testmethod void testToTitleCase(){
+    @isTest static void testToTitleCase(){
         assertToTitleCase('\t','\t');
         assertToTitleCase('\n','\n');
         assertToTitleCase('\f','\f');
@@ -147,7 +146,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.toTitleCase(\'' + aCharacter + '\') returned ' + actual);
     }
     
-    private static testmethod void testToLowerCase(){
+    @isTest static void testToLowerCase(){
         assertToLowerCase('\t','\t');
         assertToLowerCase('\n','\n');
         assertToLowerCase('\f','\f');
@@ -254,7 +253,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.toLowerCase(\'' + aCharacter + '\') returned ' + actual);
     }
     
-    private static testmethod void testIsTitleCase(){
+    @isTest static void testIsTitleCase(){
         //test: global static Boolean isTitleCase(String character){ 
         assertIsTitleCase('\t',FALSE);
         assertIsTitleCase('\n',FALSE);
@@ -362,7 +361,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.isTitleCase(\'' + aCharacter + '\') returned ' + actual);
     }
     
-    private static testmethod void testToUpperCase(){
+    @isTest static void testToUpperCase(){
         //test: global static String toUpperCase(String ch){
         assertToUpperCase('\t','\t');
         assertToUpperCase('\n','\n');
@@ -470,7 +469,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.toUpperCase(\'' + aCharacter + '\') returned ' + actual);
     }
     
-    private static testmethod void testIsLowerCase(){
+    @isTest static void testIsLowerCase(){
         final String UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         for(Integer i = 0; i < UPPER.length(); i++){
             assertIsLowerCase(UPPER.substring(i,i+1), false);
@@ -486,7 +485,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.isLowerCase(\'' + aCharacter + '\') returned ' + actual);
     }
 
-    private static testmethod void testToAscii(){
+    @isTest static void testToAscii(){
         //test: global static Integer toAscii(String character){
         assertToAscii('\t',9);
         assertToAscii('\n',10);
@@ -503,7 +502,7 @@ private class ApexLangUtilsTest {
             + actual + '\'; expected \'' +expected + '\'');
     }
 
-    private static testmethod void testToChar(){
+    @isTest static void testToChar(){
         //test: global static String toChar(Integer ascii){
         assertToChar(-1,null);
         assertToChar(0,null);
@@ -523,7 +522,7 @@ private class ApexLangUtilsTest {
             + actual + '\'; expected \'' +expected + '\'');
     }
 
-    private static testmethod void testIsAscii(){
+    @isTest static void testIsAscii(){
         //test: global static boolean isAscii(String character) {
         for(Integer i = 0; i < CHARS_ALL_ASCII.length(); i++){
             assertIsAscii(ApexLangUtils.charAt(CHARS_ALL_ASCII,i), true);        
@@ -538,7 +537,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.isAscii(\'' + charactr + '\') returned ' + actual);
     }
             
-    private static testmethod void testIsAsciiPrintable(){
+    @isTest static void testIsAsciiPrintable(){
         //test: global static boolean isAsciiPrintable(String character) {
         for(Integer i = 0; i < CHARS_ASCII_PRINTABLE.length(); i++){
             assertIsAsciiPrintable(ApexLangUtils.charAt(CHARS_ASCII_PRINTABLE,i), true);        
@@ -553,7 +552,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.isAsciiPrintable(\'' + charactr + '\') returned ' + actual);
     }*/
             
-    private static testmethod void testIsAsciiControl(){
+    @isTest static void testIsAsciiControl(){
         //test: global static boolean isAsciiControl(String character) {
         for(Integer i = 0; i < CHARS_ASCII_CONTROL.length(); i++){
             asertIsAsciiControl(ApexLangUtils.charAt(CHARS_ASCII_CONTROL,i), true);        
@@ -571,7 +570,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.isAsciiControl(\'' + charactr + '\') returned ' + actual);
     }
             
-    private static testmethod void testIsAsciiAlpha(){
+    @isTest static void testIsAsciiAlpha(){
         //test: global static boolean isAsciiAlpha(String character) {
         for(Integer i = 0; i < CHARS_ASCII_UPPER.length(); i++){
             assertIsAsciiAlpha(ApexLangUtils.charAt(CHARS_ASCII_UPPER,i), true);        
@@ -592,7 +591,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.isAsciiAlpha(\'' + charactr + '\') returned ' + actual);
     }
             
-    private static testmethod void testIsAsciiAlphaUpper(){
+    @isTest static void testIsAsciiAlphaUpper(){
         //test: global static boolean isAsciiAlphaUpper(String character) {
         for(Integer i = 0; i < CHARS_ASCII_UPPER.length(); i++){
             assertIsAsciiAlphaUpper(ApexLangUtils.charAt(CHARS_ASCII_UPPER,i), true);        
@@ -613,7 +612,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.isAsciiAlphaUpper(\'' + charactr + '\') returned ' + actual);
     }
             
-    private static testmethod void testIsAsciiAlphaLower(){
+    @isTest static void testIsAsciiAlphaLower(){
         //test: global static boolean isAsciiAlphaLower(String character) {
         for(Integer i = 0; i < CHARS_ASCII_UPPER.length(); i++){
             assertIsAsciiAlphaLower(ApexLangUtils.charAt(CHARS_ASCII_UPPER,i), false);        
@@ -634,7 +633,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.isAsciiAlphaLower(\'' + charactr + '\') returned ' + actual);
     }
             
-    private static testmethod void testIsAsciiNumeric(){
+    @isTest static void testIsAsciiNumeric(){
         //test: global static boolean isAsciiNumeric(String character) {
         for(Integer i = 0; i < CHARS_ASCII_UPPER.length(); i++){
             assertIsAsciiNumeric(ApexLangUtils.charAt(CHARS_ASCII_UPPER,i), false);        
@@ -655,7 +654,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.isAsciiNumeric(\'' + charactr + '\') returned ' + actual);
     }
             
-    private static testmethod void testIsAsciiAlphanumeric(){
+    @isTest static void testIsAsciiAlphanumeric(){
         //test: global static boolean isAsciiAlphanumeric(String character) {
         for(Integer i = 0; i < CHARS_ASCII_UPPER.length(); i++){
             assertIsAsciiAlphanumeric(ApexLangUtils.charAt(CHARS_ASCII_UPPER,i), true);        
@@ -676,7 +675,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.isAsciiAlphanumeric(\'' + charactr + '\') returned ' + actual);
     }
 
-    private static testmethod void testIsDigit(){
+    @isTest static void testIsDigit(){
         //test: global static Boolean isDigit(String character){ 
         for(Integer i = 0; i < CHARS_ASCII_UPPER.length(); i++){
             assertIsAsciiDigit(ApexLangUtils.charAt(CHARS_ASCII_UPPER,i), false);        
@@ -697,7 +696,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.isDigit(\'' + charactr + '\') returned ' + actual);
     }
 
-    private static testmethod void testIsLetter(){
+    @isTest static void testIsLetter(){
         //test: global static Boolean isLetter(String character){ 
         for(Integer i = 0; i < CHARS_ASCII_UPPER.length(); i++){
             assertIsLetter(ApexLangUtils.charAt(CHARS_ASCII_UPPER,i), true);        
@@ -718,7 +717,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.isLetter(\'' + charactr + '\') returned ' + actual);
     }
 
-    private static testmethod void testIsLetterOrDigit(){
+    @isTest static void testIsLetterOrDigit(){
         //test: global static Boolean isLetterOrDigit(String character){
         for(Integer i = 0; i < CHARS_ASCII_UPPER.length(); i++){
             assertIsLetterOrDigit(ApexLangUtils.charAt(CHARS_ASCII_UPPER,i), true);        
@@ -739,7 +738,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.isLetterOrDigit(\'' + charactr + '\') returned ' + actual);
     }
 
-    private static testmethod void testIsWhitespace(){
+    @isTest static void testIsWhitespace(){
         //test: global static Boolean isWhitespace(String character){
         for(Integer i = 0; i < CHARS_ASCII_UPPER.length(); i++){
             assertIsWhitespace(ApexLangUtils.charAt(CHARS_ASCII_UPPER,i), false);        
@@ -763,7 +762,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.isWhitespace(\'' + charactr + '\') returned ' + actual);
     }
             
-    private static testmethod void testGetType(){
+    @isTest static void testGetType(){
         //test: global static Integer getType(String character){
         assertGetType('¿', ApexLangUtils.UNASSIGNED); 
         assertGetType(ApexLangUtils.toChar(0), ApexLangUtils.CONTROL); 
@@ -880,14 +879,14 @@ private class ApexLangUtilsTest {
     /* NumberApexLangUtils tests */
     
     
-    private static testmethod void testMaxIntegerValue(){
+    @isTest static void testMaxIntegerValue(){
         System.assert(ApexLangUtils.MAX_INTEGER == 2147483647);
     }
-    private static testmethod void testlgerValue(){
+    @isTest static void testlgerValue(){
         System.assert(ApexLangUtils.MIN_INTEGER == -2147483647);
     }
     
-    private static testmethod void testParseIntBadRadix(){
+    @isTest static void testParseIntBadRadix(){
         //test: global static Integer parseInt(String str, Integer radix){
         Boolean exceptionCaught = false;
         try{
@@ -905,7 +904,7 @@ private class ApexLangUtilsTest {
         System.assert(exceptionCaught,'ApexLangUtils.parseInt(\'01\',37) did not throw IllegalArgumentException'); 
     }
     
-    private static testmethod void testParseIntEmptyNumber(){
+    @isTest static void testParseIntEmptyNumber(){
         //test: global static Integer parseInt(String str, Integer radix){
         Boolean exceptionCaught = false;
         try{
@@ -923,7 +922,7 @@ private class ApexLangUtilsTest {
         System.assert(exceptionCaught,'ApexLangUtils.parseInt(\'  \',2) did not throw NumberFormatException'); 
     }
     
-    private static testmethod void testParseIntInvalidNumber(){
+    @isTest static void testParseIntInvalidNumber(){
         //test: global static Integer parseInt(String str, Integer radix){
         for(Integer i = 2; i < 37; i++){
             assertParseIntNumberFormatException(
@@ -942,7 +941,7 @@ private class ApexLangUtilsTest {
         System.assert(exceptionCaught,'ApexLangUtils.parseInt(\'' + str + '\',' + radix + ') did not throw NumberFormatException'); 
     }
     
-    private static testmethod void testParseIntBase2(){
+    @isTest static void testParseIntBase2(){
         //test: global static Integer parseInt(String str, Integer radix){
         assertParseInt('0',2,0);
         assertParseInt('00',2,0);
@@ -952,14 +951,14 @@ private class ApexLangUtilsTest {
         assertParseInt('100',2,4);
     }
     
-    private static testmethod void testParseIntBase10(){
+    @isTest static void testParseIntBase10(){
         //test: global static Integer parseInt(String str, Integer radix){
         assertParseInt('0',10,0);
         assertParseInt('-0',10,0);
         assertParseInt('473',10,473);
     }
     
-    private static testmethod void testParseIntOtherBases(){
+    @isTest static void testParseIntOtherBases(){
         //test: global static Integer parseInt(String str, Integer radix){
         assertParseInt('1100110',2,102);
         assertParseInt('-FF',16,-255);
@@ -973,7 +972,7 @@ private class ApexLangUtilsTest {
             + actual + '; expected ' + expected + '');
     }
     
-    private static testmethod void testIntegerToBinary(){
+    @isTest static void testIntegerToBinary(){
         //test: global static String toBinaryString(Integer i){
         assertIntegerToBinary(-2147483647,'-1111111111111111111111111111111');
         assertIntegerToBinary(-2147483646,'-1111111111111111111111111111110');
@@ -997,7 +996,7 @@ private class ApexLangUtilsTest {
             + actual + '\'; expected \'' + expected + '\'');
     }
     
-    private static testmethod void testIntegerToOctal(){
+    @isTest static void testIntegerToOctal(){
         //test: global static String toOctalString(Integer i){
         assertIntegerToOctal(-2147483647,'-17777777777');
         assertIntegerToOctal(-2147483646,'-17777777776');
@@ -1031,7 +1030,7 @@ private class ApexLangUtilsTest {
             + actual + '\'; expected \'' + expected + '\'');
     }
 
-    private static testmethod void testIntegerToHex(){
+    @isTest static void testIntegerToHex(){
         //test: global static String toHexString(Integer i){
         assertIntegerToHex(-2147483647,'-7FFFFFFF');
         assertIntegerToHex(-2147483646,'-7FFFFFFE');
@@ -1083,13 +1082,13 @@ private class ApexLangUtilsTest {
             + actual + '\'; expected \'' + expected + '\'');
     }
  
-    private static testmethod void testIntegerToStringNullInput(){
+    @isTest static void testIntegerToStringNullInput(){
         //test: global static String toString(Integer i, Integer radix){
         Integer i = null;
         System.assertEquals(null,ApexLangUtils.toString(i,2));
     }    
     
-    private static testmethod void testIntegerToStringBadRadix(){
+    @isTest static void testIntegerToStringBadRadix(){
         //test: global static String toString(Integer i, Integer radix){
         Boolean exceptionCaught = false;
         try{
@@ -1107,7 +1106,7 @@ private class ApexLangUtilsTest {
         System.assert(exceptionCaught,'ApexLangUtils.toString(null,1) did not throw IllegalArgumentException'); 
     }
     
-    private static testmethod void testLongToBinary(){
+    @isTest static void testLongToBinary(){
         //test: global static String toBinaryString(Long i){
         /*
         //can't do these tests b/c hitting System.Exception: Maximum stack depth reached: 66 
@@ -1136,7 +1135,7 @@ private class ApexLangUtilsTest {
             + actual + '\'; expected \'' + expected + '\'');
     }
     
-    private static testmethod void testLongToOctal(){
+    @isTest static void testLongToOctal(){
         //test: global static String toOctalString(Long l){
         assertLongToOctal(-9223372036854775807L,'-777777777777777777777');
         assertLongToOctal(-9223372036854775806L,'-777777777777777777776');
@@ -1170,7 +1169,7 @@ private class ApexLangUtilsTest {
             + actual + '\'; expected \'' + expected + '\'');
     }
 
-    private static testmethod void testLongToHex(){
+    @isTest static void testLongToHex(){
         //test: global static String toHexString(Long l){
         assertLongToHex(-9223372036854775807L,'-7FFFFFFFFFFFFFFF');
         assertLongToHex(-9223372036854775806L,'-7FFFFFFFFFFFFFFE');
@@ -1222,13 +1221,13 @@ private class ApexLangUtilsTest {
             + actual + '\'; expected \'' + expected + '\'');
     }
       
-    private static testmethod void testLongToStringNullInput(){
+    @isTest static void testLongToStringNullInput(){
         //test: global static String toString(Long l, Long radix){
         Long l = null;
         System.assertEquals(null,ApexLangUtils.toString(l,2));
     }    
     
-    private static testmethod void testLongToStringBadRadix(){
+    @isTest static void testLongToStringBadRadix(){
         //test: global static String toString(Long l, Integer radix){
         Boolean exceptionCaught = false;
         try{
@@ -1249,7 +1248,7 @@ private class ApexLangUtilsTest {
     /* NumberApexLangUtils tests */
 
     /* SetApexLangUtils Tests */
-    private static testmethod void testObjectToBlob(){
+    @isTest static void testObjectToBlob(){
         //test: global static Set<Blob> objectToBlob(Set<Object> objectSet){
         assertObjectToBlob(null, null);
         assertObjectToBlob(new Set<Object>{}, new Set<Blob>{});
@@ -1260,7 +1259,7 @@ private class ApexLangUtilsTest {
     } 
 
 
-    private static testmethod void testObjectToBoolean(){ 
+    @isTest static void testObjectToBoolean(){ 
         //test: global static Set<Boolean> objectToBoolean(Set<Object> objectSet){ 
         assertObjectToBoolean(null, null);
         assertObjectToBoolean(new Set<Object>{}, new Set<Boolean>{});
@@ -1268,7 +1267,7 @@ private class ApexLangUtilsTest {
         assertObjectToBoolean(new Set<Object>{true,false}, new Set<Boolean>{false,true});
     }
 
-    private static testmethod void testObjectToDate(){ 
+    @isTest static void testObjectToDate(){ 
         //test: global static Set<Date> objectToDate(Set<Object> objectSet){ 
         assertObjectToDate(null, null);
         assertObjectToDate(new Set<Object>{}, new Set<Date>{});
@@ -1278,7 +1277,7 @@ private class ApexLangUtilsTest {
         assertObjectToDate(new Set<Object>{date1,date2}, new Set<Date>{date1,date2});
     }
 
-    private static testmethod void testObjectToDatetime(){ 
+    @isTest static void testObjectToDatetime(){ 
         //test: global static Set<Datetime> objectToDatetime(Set<Object> objectSet){ 
         assertObjectToDatetime(null, null);
         assertObjectToDatetime(new Set<Object>{}, new Set<Datetime>{});
@@ -1288,7 +1287,7 @@ private class ApexLangUtilsTest {
         assertObjectToDatetime(new Set<Object>{date1,date2}, new Set<Datetime>{date1,date2});
     }
 
-    private static testmethod void testObjectToDecimal(){ 
+    @isTest static void testObjectToDecimal(){ 
         //test: global static Set<Decimal> objectToDecimal(Set<Object> objectSet){
         assertObjectToDecimal(null, null);
         assertObjectToDecimal(new Set<Object>{}, new Set<Decimal>{});
@@ -1298,7 +1297,7 @@ private class ApexLangUtilsTest {
         assertObjectToDecimal(new Set<Object>{dec1,dec2}, new Set<Decimal>{dec1,dec2});
     }
 
-    private static testmethod void testObjectToDouble(){ 
+    @isTest static void testObjectToDouble(){ 
         //test: global static Set<Double> objectToDouble(Set<Object> objectSet){ 
         assertObjectToDouble(null, null);
         assertObjectToDouble(new Set<Object>{}, new Set<Double>{});
@@ -1308,7 +1307,7 @@ private class ApexLangUtilsTest {
         assertObjectToDouble(new Set<Object>{doub1,doub2}, new Set<Double>{doub1,doub2});
     }
 
-    private static testmethod void testObjectToID(){ 
+    @isTest static void testObjectToID(){ 
         //test: global static Set<ID> objectToID(Set<Object> objectSet){ 
         assertObjectToID(null, null);
         assertObjectToID(new Set<Object>{}, new Set<ID>{});
@@ -1320,7 +1319,7 @@ private class ApexLangUtilsTest {
         assertObjectToID(new Set<Object>{acct1.id,acct2.id}, new Set<Id>{acct1.id,acct2.id});
     } 
 
-    private static testmethod void testObjectToInteger(){ 
+    @isTest static void testObjectToInteger(){ 
         //test: global static Set<Integer> objectToInteger(Set<Object> objectSet){ 
         assertObjectToInteger(null, null);
         assertObjectToInteger(new Set<Object>{}, new Set<Integer>{});
@@ -1330,7 +1329,7 @@ private class ApexLangUtilsTest {
         assertObjectToInteger(new Set<Object>{int1,int2}, new Set<Integer>{int1,int2});
     }
 
-    private static testmethod void testObjectToLong(){ 
+    @isTest static void testObjectToLong(){ 
         //test: global static Set<Long> objectToLong(Set<Object> objectSet){ 
         assertObjectToLong(null, null);
         assertObjectToLong(new Set<Object>{}, new Set<Long>{});
@@ -1340,7 +1339,7 @@ private class ApexLangUtilsTest {
         assertObjectToLong(new Set<Object>{long1,long2}, new Set<Long>{long1,long2});
     }
 
-    private static testmethod void testObjectToTime(){ 
+    @isTest static void testObjectToTime(){ 
         //test: global static Set<Time> objectToTime(Set<Object> objectSet){ 
         assertObjectToTime(null, null);
         assertObjectToTime(new Set<Object>{}, new Set<Time>{});
@@ -1350,7 +1349,7 @@ private class ApexLangUtilsTest {
         assertObjectToTime(new Set<Object>{time1,time2}, new Set<Time>{time1,time2});
     }
 
-    private static testmethod void testObjectToString(){ 
+    @isTest static void testObjectToString(){ 
         //test: global static Set<String> objectToString(Set<Object> objectSet){ 
         assertObjectToString(null, null);
         assertObjectToString(new Set<Object>{}, new Set<String>{});
@@ -1360,7 +1359,7 @@ private class ApexLangUtilsTest {
         assertObjectToString(new Set<Object>{str1,str2}, new Set<String>{str1,str2});
     }
     
-    private static testmethod void testToStringBlobSet(){ 
+    @isTest static void testToStringBlobSet(){ 
         //test: global static String toString(Set<Blob> blobSet)
         assertToStringBlobSet(null, null);
         assertToStringBlobSet(new Set<Blob>{}, '');
@@ -1370,7 +1369,7 @@ private class ApexLangUtilsTest {
         assertToStringBlobSet(new Set<Blob>{blob1,blob2}, '{\'' + blob1.toString() + '\',\'' + blob2.toString() + '\'}');
     }    
 
-    private static testmethod void testToStringBooleanSet(){ 
+    @isTest static void testToStringBooleanSet(){ 
         //test: global static String toString(Set<Boolean> booleanSet)
         assertToStringBooleanSet(null, null);
         assertToStringBooleanSet(new Set<Boolean>{}, '');
@@ -1378,7 +1377,7 @@ private class ApexLangUtilsTest {
         assertToStringBooleanSet(new Set<Boolean>{true, false}, '{false,true}');
     }
 
-    private static testmethod void testToStringDateSet(){ 
+    @isTest static void testToStringDateSet(){ 
         //test: global static String toString(Set<Date> dateSet)
         assertToStringDateSet(null, null);
         assertToStringDateSet(new Set<Date>{}, '');
@@ -1388,7 +1387,7 @@ private class ApexLangUtilsTest {
         assertToStringDateSet(new Set<Date>{date1,date2}, '{'+date1+','+date2+'}' );
     }
 
-    private static testmethod void testToStringDatetimeSet(){ 
+    @isTest static void testToStringDatetimeSet(){ 
         //test: global static String toString(Set<Datetime> datetimeSet)
         assertToStringDatetimeSet(null, null);
         assertToStringDatetimeSet(new Set<Datetime>{}, '');
@@ -1398,7 +1397,7 @@ private class ApexLangUtilsTest {
         assertToStringDatetimeSet(new Set<Datetime>{date1,date2}, '{'+date1+','+date2+'}' );
     }
 
-    private static testmethod void testToStringDecimalSet(){ 
+    @isTest static void testToStringDecimalSet(){ 
         //test: global static String toString(Set<Decimal> decimalSet)
         assertToStringDecimalSet(null, null);
         assertToStringDecimalSet(new Set<Decimal>{}, '');
@@ -1408,7 +1407,7 @@ private class ApexLangUtilsTest {
         assertToStringDecimalSet(new Set<Decimal>{dec1,dec2}, '{' + dec1 + ',' + dec2 + '}');
     }
 
-    private static testmethod void testToStringDoubleSet(){ 
+    @isTest static void testToStringDoubleSet(){ 
         //test: global static String toString(Set<Double> doubleSet)
         assertToStringDoubleSet(null, null);
         assertToStringDoubleSet(new Set<Double>{}, '');
@@ -1418,7 +1417,7 @@ private class ApexLangUtilsTest {
         assertToStringDoubleSet(new Set<Double>{doub1,doub2}, '{' + doub1 + ',' + doub2 + '}');
     }
 
-    private static testmethod void testToStringIDSet(){ 
+    @isTest static void testToStringIDSet(){ 
         //test: global static String toString(Set<ID> idSet)
         assertToStringIDSet(null, null);
         assertToStringIDSet(new Set<ID>{}, '');
@@ -1430,7 +1429,7 @@ private class ApexLangUtilsTest {
         assertToStringIDSet(new Set<ID>{acct1.id,acct2.id}, '{' + acct1.id + ',' + acct2.id + '}');
     }
 
-    private static testmethod void testToStringIntegerSet(){ 
+    @isTest static void testToStringIntegerSet(){ 
         //test: global static String toString(Set<Integer> integerSet)
         assertToStringIntegerSet(null, null);
         assertToStringIntegerSet(new Set<Integer>{}, '');
@@ -1439,7 +1438,7 @@ private class ApexLangUtilsTest {
         assertToStringIntegerSet(new Set<Integer>{int1}, '{' + int1 + '}' );
         assertToStringIntegerSet(new Set<Integer>{int1,int2}, '{' + int1 + ',' + int2 + '}' );
     }
-    private static testmethod void testToStringLongSet(){ 
+    @isTest static void testToStringLongSet(){ 
         //test: global static String toString(Set<Long> longSet)
         assertToStringLongSet(null, null);
         assertToStringLongSet(new Set<Long>{}, '');
@@ -1449,7 +1448,7 @@ private class ApexLangUtilsTest {
         assertToStringLongSet(new Set<Long>{long1,long2}, '{' + long1 + ',' + long2 + '}');
     }
 
-    private static testmethod void testToStringTimeSet(){ 
+    @isTest static void testToStringTimeSet(){ 
         //test: global static String toString(Set<Time> timeSet)
         assertToStringTimeSet(null, null);
         assertToStringTimeSet(new Set<Time>{}, '');
@@ -1460,7 +1459,7 @@ private class ApexLangUtilsTest {
     }
 
 
-    private static testmethod void testToStringStringSet(){ 
+    @isTest static void testToStringStringSet(){ 
         //test: global static String toString(Set<String> stringSet)
         assertToStringStringSet(null, null);
         assertToStringStringSet(new Set<String>{}, '');
@@ -1499,7 +1498,7 @@ private class ApexLangUtilsTest {
         return EncodingUtil.base64Decode(''+System.currentTimeMillis()+Math.roundToLong(Math.random()*10000));    
     }*/
 
-    private static testmethod void testListToSet_String(){
+    @isTest static void testListToSet_String(){
         List<String> aList = null;
         System.assertEquals(null,ApexLangUtils.listToSet(aList));
         System.assertEquals(0,ApexLangUtils.listToSet(new List<String>()).size());
@@ -1509,7 +1508,7 @@ private class ApexLangUtilsTest {
         System.assertEquals(1,ApexLangUtils.listToSet(new List<String>{'a','a'}).size());
     }
     
-    private static testmethod void testSetToList_String(){
+    @isTest static void testSetToList_String(){
         System.assertEquals(null,ApexLangUtils.setToList(null));
         System.assertEquals(0,ApexLangUtils.setToList(new Set<String>()).size());
         System.assertEquals(1,ApexLangUtils.setToList(new Set<String>{''}).size());
@@ -1518,7 +1517,7 @@ private class ApexLangUtilsTest {
         System.assertEquals(1,ApexLangUtils.setToList(new Set<String>{'a','a'}).size());
     }
 
-    private static testmethod void testAssertEquals(){
+    @isTest static void testAssertEquals(){
         final Blob blob1 = generateRandomBlob();
         final Date date1 = Date.newInstance(2009,1,1);
         final Datetime datetime1 = Datetime.newInstance(2009,1,1);
@@ -1535,7 +1534,7 @@ private class ApexLangUtilsTest {
         ApexLangUtils.assertEquals(new Set<Time>{time1},new Set<Time>{time1});
     }
 
-    private static testmethod void testEquals(){
+    @isTest static void testEquals(){
         final Set<Object> NULL_SET = null;
         System.assertEquals(true,ApexLangUtils.equals(NULL_SET,NULL_SET));       
         System.assertEquals(false,ApexLangUtils.equals(null,new Set<Integer>{1}));       
@@ -1572,7 +1571,7 @@ private class ApexLangUtilsTest {
 
     /* StringApexLangUtils tests*/
 
-    private static testmethod void testAbbreviateTwoArgs(){
+    @isTest static void testAbbreviateTwoArgs(){
         assertAbbreviateTwoArgs(null,         -1, null,         false);
         assertAbbreviateTwoArgs('',         4,     '',            false);
         assertAbbreviateTwoArgs('abcdefg',     6,     'abc...',    false);
@@ -1605,7 +1604,7 @@ private class ApexLangUtilsTest {
         }
     }
     
-    private static testmethod void testAbbreviateThreeArgs(){
+    @isTest static void testAbbreviateThreeArgs(){
         assertAbbreviateThreeArgs(null,                 -1,    -1,     null,             false);
         assertAbbreviateThreeArgs('',                     0,     4,         '',                false);
         assertAbbreviateThreeArgs('abcdefghijklmno',    -1, 10,     'abcdefg...',    false);
@@ -1645,7 +1644,7 @@ private class ApexLangUtilsTest {
         }
     }
  
-    private static testmethod void testIndexOfAny(){
+    @isTest static void testIndexOfAny(){
         //test: global static int indexOfAny(String str, String searchChars) {
         assertIndexOfAny(null, null, -1);
         assertIndexOfAny('', null, -1);
@@ -1661,7 +1660,7 @@ private class ApexLangUtilsTest {
             + searchChars + ') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
     
-     private static testmethod void testLastIndexOfAny(){
+     @isTest static void testLastIndexOfAny(){
         //test: global static Integer lastIndexOfAny(String str, String[] searchStrs) {
         assertLastIndexOfAny(null, null, -1);
         assertLastIndexOfAny('', null, -1);
@@ -1681,7 +1680,7 @@ private class ApexLangUtilsTest {
             + ApexLangUtils.toString(searchStrs) + ') returned ' + actual + '; expected ' + expected);
     }
     
-    private static testmethod void testLastIndexOfTwoArgs(){
+    @isTest static void testLastIndexOfTwoArgs(){
         //test: global static Integer lastIndexOf(String str, String searchStr) {
         assertLastIndexOfTwoArgs(null, '', -1);
         assertLastIndexOfTwoArgs('', null, -1);
@@ -1698,7 +1697,7 @@ private class ApexLangUtilsTest {
             + searchStr + '\') returned ' + actual + '; expected ' + expected);
     }
     
-    private static testmethod void testLastIndexOfThreeArgs(){
+    @isTest static void testLastIndexOfThreeArgs(){
         //test: global static Integer lastIndexOf(String str, String searchStr, Integer startPos) {
         assertLastIndexOfThreeArgs(null, null, -1, -1);
         assertLastIndexOfThreeArgs('', null, -1, -1);
@@ -1717,7 +1716,7 @@ private class ApexLangUtilsTest {
             + searchStr + '\',' + startPos + ') returned ' + actual + '; expected ' + expected);
     }
     
-    private static testmethod void testIndexOfAnyStringArray(){
+    @isTest static void testIndexOfAnyStringArray(){
         //test: global static Integer indexOfAny(String str, String[] searchStrs) {
         assertIndexOfAnyStringArray(null, null, -1);
         assertIndexOfAnyStringArray(null, new String[]{}, -1);
@@ -1737,7 +1736,7 @@ private class ApexLangUtilsTest {
             + ApexLangUtils.toString(searchStrs) + ') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
 
-    private static testmethod void testCenterTwoArgs(){
+    @isTest static void testCenterTwoArgs(){
         assertCenterTwoArgs(null,     -1,    null);
         assertCenterTwoArgs('',     4,    '    ');
         assertCenterTwoArgs('ab',     -1,    'ab');
@@ -1752,7 +1751,7 @@ private class ApexLangUtilsTest {
             + size + ') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
     
-    private static testmethod void testChompOneArg(){
+    @isTest static void testChompOneArg(){
         assertChompOneArg(null,                null);
         assertChompOneArg('',                '');
         assertChompOneArg('abc \r',            'abc ');
@@ -1773,7 +1772,7 @@ private class ApexLangUtilsTest {
             + actual + '\'; expected \'' + expected + '\'');
     }
     
-    private static testmethod void testChompTwoArgs(){
+    @isTest static void testChompTwoArgs(){
         assertChompTwoArgs(null,         null,         null);
         assertChompTwoArgs('',             null,         '');
         assertChompTwoArgs('foobar',     'bar',         'foo');
@@ -1793,7 +1792,7 @@ private class ApexLangUtilsTest {
     }
     
     
-    private static testmethod void testCenterThreeArgs(){
+    @isTest static void testCenterThreeArgs(){
         assertCenterThreeArgs(null,     -1, null,     null);
         assertCenterThreeArgs('',         4,     ' ',     '    ');
         assertCenterThreeArgs('ab',     -1, ' ',     'ab');
@@ -1811,7 +1810,7 @@ private class ApexLangUtilsTest {
             + size + ',\'' + padStr + '\') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
     
-    private static testmethod void testChop(){
+    @isTest static void testChop(){
         assertChop(null,        null);
         assertChop('',             '');
         assertChop('abc \r',     'abc ');
@@ -1831,7 +1830,7 @@ private class ApexLangUtilsTest {
             + actual + '\'; expected \'' + expected + '\'');
     }
     
-    private static testmethod void testContainsAny(){
+    @isTest static void testContainsAny(){
         assertContainsAny(null,         null,     false);
         assertContainsAny('',             null,     false);
         assertContainsAny(null,         null,     false);
@@ -1848,7 +1847,7 @@ private class ApexLangUtilsTest {
     }
     
     
-    private static testmethod void testContainsNone(){
+    @isTest static void testContainsNone(){
         //test: global static boolean containsNone(String str, String invalidChars) {
         assertContainsNone(null,     null,     true);
         assertContainsNone(null,     null,     true);
@@ -1865,7 +1864,7 @@ private class ApexLangUtilsTest {
             + actual);
     }
     
-    private static testmethod void testContainsOnly(){
+    @isTest static void testContainsOnly(){
         //test: global static boolean containsOnly(String str, String valid) {
         assertContainsOnly(null,     null,    false);
         assertContainsOnly(null,     null,    false);
@@ -1883,7 +1882,7 @@ private class ApexLangUtilsTest {
             + actual);
     }
     
-    private static testmethod void testCountMatches(){
+    @isTest static void testCountMatches(){
         //test: global static Integer countMatches(String str, String sub) {
         assertCountMatches(null, null, 0);
         assertCountMatches('', null, 0);
@@ -1900,7 +1899,7 @@ private class ApexLangUtilsTest {
             + actual + '; expected ' + expected);
     }
 
-    private static testmethod void testDefaultIfEmpty(){
+    @isTest static void testDefaultIfEmpty(){
         //test: global static String defaultIfEmpty(String str, String defaultStr) {
         assertDefaultIfEmpty(null, 'NULL', 'NULL');
         assertDefaultIfEmpty('', 'NULL', 'NULL');
@@ -1913,7 +1912,7 @@ private class ApexLangUtilsTest {
             + actual + '\'; expected \'' + expected + '\'');
     }
     
-    private static testmethod void testDefaultStringOneArg(){
+    @isTest static void testDefaultStringOneArg(){
         //test: global static String defaultString(String str) {
         assertDefaultStringOneArg(null, '');
         assertDefaultStringOneArg('', '');
@@ -1926,7 +1925,7 @@ private class ApexLangUtilsTest {
             + actual + '\'; expected \'' + expected + '\'');
     }
     
-    private static testmethod void testDefaultStringTwoArgs(){
+    @isTest static void testDefaultStringTwoArgs(){
         //test: global static String defaultString(String str, String defaultStr) {
         assertDefaultStringTwoArgs(null, 'NULL', 'NULL');
         assertDefaultStringTwoArgs('', 'NULL', '');
@@ -1940,7 +1939,7 @@ private class ApexLangUtilsTest {
     }
     
 
-    private static testmethod void testDeleteWhitespace(){
+    @isTest static void testDeleteWhitespace(){
         //test: global static String deleteWhitespace(String str) {
         assertDeleteWhitespace(null,             null);
         assertDeleteWhitespace('',                 '');
@@ -1954,7 +1953,7 @@ private class ApexLangUtilsTest {
             + actual + '\'; expected \'' + expected + '\'');
     }
 
-    private static testmethod void testDifference(){
+    @isTest static void testDifference(){
         //test: global static String difference(String str1, String str2) {
         assertDifference(null,         null,         null);
         assertDifference('',         null,         '');
@@ -1975,7 +1974,7 @@ private class ApexLangUtilsTest {
 
 
 
-    private static testmethod void testEquals2(){
+    @isTest static void testEquals2(){
         //test: global static Boolean equals(String str1, String str2) {
         assertEquals(null,     null,     true);
         assertEquals(null,     'abc',     false);
@@ -1989,7 +1988,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.equals(\'' + str1 + '\',\'' + str2 + '\') returned ' + actual);
     }
 
-    private static testmethod void testEqualsIgnoreCase(){
+    @isTest static void testEqualsIgnoreCase(){
         //test: global static Boolean equalsIgnoreCase(String str1, String str2) {
         assertEqualsIgnoreCase(null,     null,     true);
         assertEqualsIgnoreCase(null,     'abc',     false);
@@ -2003,7 +2002,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.equalsIgnoreCase(\'' + str1 + '\',\'' + str2 + '\') returned ' + actual);
     }
 
-    private static testmethod void testIndexOf(){
+    @isTest static void testIndexOf(){
         //test: global static Integer indexOf(String str, String searchStr) {
         assertIndexOf(null,         null,     -1);
         assertIndexOf('',             null,     -1);
@@ -2017,7 +2016,7 @@ private class ApexLangUtilsTest {
             + actual + '; expected ' + expected);
     }
 
-    private static testmethod void testIndexOfDifference(){
+    @isTest static void testIndexOfDifference(){
         //test: global static Integer indexOfDifference(String str1, String str2) {
         assertIndexOfDifference(null,         null,         -1);
         assertIndexOfDifference(null,         '',         0);
@@ -2037,7 +2036,7 @@ private class ApexLangUtilsTest {
             + actual + '; expected ' + expected);
     }
     
-    private static testmethod void testIndexOfAnyBut(){
+    @isTest static void testIndexOfAnyBut(){
         //test: global static int indexOfAnyBut(String str, String searchChars) {
         assertIndexOfAnyBut(null,             null,    -1);
         assertIndexOfAnyBut('',             null,    -1);
@@ -2054,7 +2053,7 @@ private class ApexLangUtilsTest {
             + actual + '; expected ' + expected);
     }
     
-    private static testmethod void testLowerCase(){
+    @isTest static void testLowerCase(){
         assertLowerCase(null, null);
         assertLowerCase('ABC', 'abc');
         assertLowerCase('abc', 'abc');
@@ -2066,7 +2065,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.lowerCase(\'' + str + '\') returned ' + actual);
     }
     
-    private static testmethod void testUpperCase(){
+    @isTest static void testUpperCase(){
         assertUpperCase(null, null);
         assertUpperCase('ABC', 'ABC');
         assertUpperCase('abc', 'ABC');
@@ -2078,7 +2077,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.upperCase(\'' + str + '\') returned ' + actual);
     }
     
-    private static testmethod void testCapitalize(){
+    @isTest static void testCapitalize(){
         assertCapitalize(null, null);
         assertCapitalize('ABC', 'ABC');
         assertCapitalize('abc', 'Abc');
@@ -2090,7 +2089,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.capitalize(\'' + str + '\') returned ' + actual);
     }
     
-    private static testmethod void testUncapitalize(){
+    @isTest static void testUncapitalize(){
         assertUncapitalize(null, null);
         assertUncapitalize('ABC', 'aBC');
         assertUncapitalize('abc', 'abc');
@@ -2102,7 +2101,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.uncapitalize(\'' + str + '\') returned ' + actual);
     }
     
-    private static testmethod void testSwapCase(){
+    @isTest static void testSwapCase(){
         assertSwapCase(null, null);
         assertSwapCase('', '');
         assertSwapCase('The dog has a BONE', 'tHE DOG HAS A bone');
@@ -2113,7 +2112,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.swapCase(\'' + str + '\') returned ' + actual);
     }
     
-    private static testmethod void testIsEmpty(){
+    @isTest static void testIsEmpty(){
         assertIsEmpty(null,     true);
         assertIsEmpty('',        true);
         assertIsEmpty(' ',        false);
@@ -2126,7 +2125,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.IsEmpty(\'' + str + '\') returned ' + actual);
     }
     
-    private static testmethod void testIsNotEmpty(){
+    @isTest static void testIsNotEmpty(){
         assertIsNotEmpty(null,         false);
         assertIsNotEmpty('',        false);
         assertIsNotEmpty(' ',        true);
@@ -2139,7 +2138,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.IsNotEmpty(\'' + str + '\') returned ' + actual);
     }
 
-    private static testmethod void testIsAlpha(){
+    @isTest static void testIsAlpha(){
         //test: global static boolean isAlpha(String str) {
         assertIsAlpha(null, false);
         assertIsAlpha('', true);
@@ -2154,7 +2153,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.isAlpha(\'' + str + '\') returned ' + actual);
     }
 
-    private static testmethod void testIsAlphaSpace(){
+    @isTest static void testIsAlphaSpace(){
         //test: global static boolean isAlphaSpace(String str) {
         assertIsAlphaSpace(null, false);
         assertIsAlphaSpace('', true);
@@ -2170,7 +2169,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.isAlphaSpace(\'' + str + '\') returned ' + actual);
     }
 
-    private static testmethod void testIsAlphanumeric(){
+    @isTest static void testIsAlphanumeric(){
         //test: global static boolean isAlphanumeric(String str) {
         assertIsAlphanumeric(null, false);
         assertIsAlphanumeric('', true);
@@ -2186,7 +2185,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.isAlphanumeric(\'' + str + '\') returned ' + actual);
     }
 
-    private static testmethod void testIsAlphanumericSpace(){
+    @isTest static void testIsAlphanumericSpace(){
         //test: global static boolean isAlphanumericSpace(String str) {
         assertIsAlphanumericSpace(null, false);
         assertIsAlphanumericSpace('', true);
@@ -2202,7 +2201,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.isAlphanumericSpace(\'' + str + '\') returned ' + actual);
     }
 
-    /*private static testmethod void testIsAsciiPrintable2(){
+    /*@isTest static void testIsAsciiPrintable2(){
         //test: global static boolean isAsciiPrintable(String str) {
         assertIsAsciiPrintable(null, false);
         assertIsAsciiPrintable('', true);
@@ -2222,7 +2221,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.isAsciiPrintable(\'' + str + '\') returned ' + actual);
     }
 
-    private static testmethod void testIsNumeric(){
+    @isTest static void testIsNumeric(){
         //test: global static boolean isNumeric(String str) {
         assertIsNumeric(null, false);
         assertIsNumeric('', true);
@@ -2239,7 +2238,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.isNumeric(\'' + str + '\') returned ' + actual);
     }
 
-    private static testmethod void testIsNumericSpace(){
+    @isTest static void testIsNumericSpace(){
         //test: global static boolean isNumericSpace(String str) {
         assertIsNumericSpace(null, false);
         assertIsNumericSpace('', true);
@@ -2256,7 +2255,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.isNumericSpace(\'' + str + '\') returned ' + actual);
     }
 
-    /*private static testmethod void testIsWhitespace2(){
+    /*@isTest static void testIsWhitespace2(){
         //test: global static boolean isWhitespace(String str) {
         assertIsWhitespace(null, false);
         assertIsWhitespace('', true);
@@ -2271,7 +2270,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.isWhitespace(\'' + str + '\') returned ' + actual);
     }*/
 
-    private static testmethod void testLength(){
+    @isTest static void testLength(){
         assertLength(null,         0);
         assertLength('',        0);
         assertLength(' ',        1);
@@ -2284,7 +2283,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.length(\'' + str + '\') returned ' + actual);
     }
 
-    private static testmethod void testIsBlank(){
+    @isTest static void testIsBlank(){
         assertOnIsBlank(true, null);
         assertOnIsBlank(true, '');
         assertOnIsBlank(true, '     ');
@@ -2299,7 +2298,7 @@ private class ApexLangUtilsTest {
             'ApexLangUtils.isBlank(\'' + (theString == null ? 'null' : theString) + '\') returned ' + !expectedReturnValue);
     }
 
-    private static testmethod void testIsNotBlank(){
+    @isTest static void testIsNotBlank(){
         assertOnIsNotBlank(false, null);
         assertOnIsNotBlank(false, '');
         assertOnIsNotBlank(false, '     ');
@@ -2314,7 +2313,7 @@ private class ApexLangUtilsTest {
             'ApexLangUtils.isNotBlank(\'' + (theString == null ? 'null' : theString) + '\') returned ' + !expectedReturnValue);
     }
     
-    private static testmethod void testTrim(){
+    @isTest static void testTrim(){
         assertTrim(null, null);
         assertTrim('', '');
         assertTrim('a', 'a');
@@ -2329,7 +2328,7 @@ private class ApexLangUtilsTest {
      
     
     
-    private static testmethod void testJoinStrings(){
+    @isTest static void testJoinStrings(){
         assertJoinStrings(null, null, null);
         assertJoinStrings(new Set<String>(), ':', null);
         assertJoinStrings(new Set<String>{'a','b','c'}, ':', 'a:c:b');
@@ -2350,7 +2349,7 @@ private class ApexLangUtilsTest {
     }
     
     
-    private static testmethod void testJoinStringsList(){
+    @isTest static void testJoinStringsList(){
         assertJoinStringsList(null, null, null);
         assertJoinStringsList(new List<String>(), ':', null);
         assertJoinStringsList(new List<String>{'a','b','c'}, ':', 'a:c:b');
@@ -2370,7 +2369,7 @@ private class ApexLangUtilsTest {
                 actual + '; expected: ' + expectedReturnValue);
     }
     
-    private static testmethod void testEndsWith(){
+    @isTest static void testEndsWith(){
         assertEndsWith(null, null, true);
         assertEndsWith('abcdef', null, false);
         assertEndsWith(null, 'def', false);
@@ -2378,7 +2377,7 @@ private class ApexLangUtilsTest {
         assertEndsWith('ABCDEF', 'def', false);
     }
 
-    private static testmethod void testEndsWithIgnoreCase(){
+    @isTest static void testEndsWithIgnoreCase(){
         assertEndsWithIgnoreCase(null, null, true);
         assertEndsWithIgnoreCase('abcdef', null, false);
         assertEndsWithIgnoreCase(null, 'def', false);
@@ -2397,7 +2396,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.endsWithIgnoreCase(\'' + str + '\',\'' + suffix + '\') returned ' + actual);
     }
 
-    private static testmethod void testContains(){
+    @isTest static void testContains(){
         assertContains(null, null, false);
         assertContains('abcdef', null, false);
         assertContains(null, 'def', false);
@@ -2422,7 +2421,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.contains(\'' + str + '\',\'' + searchStr + '\') returned ' + actual);
     }
     
-    private static testmethod void testContainsIgnoreCase(){
+    @isTest static void testContainsIgnoreCase(){
         assertContainsIgnoreCase(null, null, false);
         assertContainsIgnoreCase('abcdef', null, false);
         assertContainsIgnoreCase(null, 'def', false);
@@ -2437,7 +2436,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.containsIgnoreCase(\'' + str + '\',\'' + searchStr + '\') returned ' + actual);
     }
 
-    private static testmethod void testSplitOneArg(){
+    @isTest static void testSplitOneArg(){
         assertSplitOneArg(null,         null);
         assertSplitOneArg('',             new String[]{''});
         assertSplitOneArg('abc def',     new String[]{'abc','def'});
@@ -2456,7 +2455,7 @@ private class ApexLangUtilsTest {
         }
     }
     
-    private static testmethod void testSplitOneArgPreserveAllTokens(){
+    @isTest static void testSplitOneArgPreserveAllTokens(){
         assertSplitOneArgPreserveAllTokens(null,         null);
         assertSplitOneArgPreserveAllTokens('',             new String[]{''});
         assertSplitOneArgPreserveAllTokens('abc def',     new String[]{'abc','def'});
@@ -2476,7 +2475,7 @@ private class ApexLangUtilsTest {
         }
     }
 
-    private static testmethod void testCharAt(){
+    @isTest static void testCharAt(){
         assertCharAt(null, -1, null);
         assertCharAt(null, 0, null);
         assertCharAt('abc', -1, null);
@@ -2497,7 +2496,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.charAt(\'' + str + '\',' + index + ') returned ' + actual);
     }
     
-    private static testmethod void testSplitTwoArgs(){
+    @isTest static void testSplitTwoArgs(){
         assertSplitTwoArgs(null,         null,     null);
         assertSplitTwoArgs('',             null,     new String[]{''});
         assertSplitTwoArgs('',             'abc',     new String[]{''});
@@ -2519,7 +2518,7 @@ private class ApexLangUtilsTest {
         }
     }
 
-    private static testmethod void testSplitThreeArgs(){
+    @isTest static void testSplitThreeArgs(){
         assertSplitThreeArgs(null,             '',     1,     null);
         assertSplitThreeArgs('',             '',     1,     new String[]{''});
         assertSplitThreeArgs('ab cd ef',     null,     0,     new String[]{'ab', 'cd', 'ef'});
@@ -2539,7 +2538,7 @@ private class ApexLangUtilsTest {
         }
     }
     
-    private static testmethod void testSplitByWholeSeparatorTwoArg(){
+    @isTest static void testSplitByWholeSeparatorTwoArg(){
         assertSplitByWholeSeparatorTwoArg(null,             null,     null);
         assertSplitByWholeSeparatorTwoArg('',                 null,    new String[]{''});
         assertSplitByWholeSeparatorTwoArg('ab cd ef',         null,    new String[]{'ab', 'cd', 'ef'});
@@ -2560,7 +2559,7 @@ private class ApexLangUtilsTest {
         }
     }
     
-    private static testmethod void testSplitPreserveAllTokensTwoArg(){
+    @isTest static void testSplitPreserveAllTokensTwoArg(){
         //test global static String[] splitPreserveAllTokens(String str, String separatorChars) {
         assertSplitPreserveAllTokensTwoArg(null,             null,    null);
         assertSplitPreserveAllTokensTwoArg('',                 null,    new String[]{''});
@@ -2587,7 +2586,7 @@ private class ApexLangUtilsTest {
         }
     }
 
-    private static testmethod void testSplitPreserveAllTokensThreeArgs(){
+    @isTest static void testSplitPreserveAllTokensThreeArgs(){
         //test global static String[] splitPreserveAllTokens(String str, String separatorChars, Integer max) {
         assertSplitPreserveAllTokensThreeArgs(null,         null,    -1, null);
         assertSplitPreserveAllTokensThreeArgs('',             null,     -1,    new String[]{''});
@@ -2614,7 +2613,7 @@ private class ApexLangUtilsTest {
         }
     }
 
-    private static testmethod void testSplitByWholeSeparatorThreeArgs(){
+    @isTest static void testSplitByWholeSeparatorThreeArgs(){
         //test global static String[] splitByWholeSeparator(String str, String separator, Integer max ) {
         
         assertTestSplitByWholeSeparatorThreeArgs(null,             null,     0, null);
@@ -2641,7 +2640,7 @@ private class ApexLangUtilsTest {
         }
     }
 
-    private static testmethod void testSplitByWholeSeparatorPreserveAllTokensTwoArgs(){
+    @isTest static void testSplitByWholeSeparatorPreserveAllTokensTwoArgs(){
         //test global static String[] splitByWholeSeparatorPreserveAllTokens(String str, String separator) {
         assertSplitByWholeSeparatorPreserveAllTokensTwoArgs(null,             null,     null);
         assertSplitByWholeSeparatorPreserveAllTokensTwoArgs('',             null,    new String[]{''});
@@ -2664,7 +2663,7 @@ private class ApexLangUtilsTest {
         }
     }
 
-    private static testmethod void testSplitByWholeSeparatorPreserveAllTokensThreeArgs(){
+    @isTest static void testSplitByWholeSeparatorPreserveAllTokensThreeArgs(){
         //test global static String[] splitByWholeSeparatorPreserveAllTokens(String str, String separator, Integer max) {
 
         assertSplitByWholeSeparatorPreserveAllTokensThreeArgs(null,                 null,     0, null);
@@ -2692,7 +2691,7 @@ private class ApexLangUtilsTest {
         }
     }
 
-    private static testmethod void testLeftPadTwoArgs(){
+    @isTest static void testLeftPadTwoArgs(){
         // test: global static String leftPad(String str, Integer size) {
         assertLeftPadTwoArgs(null,     -1,    null);
         assertLeftPadTwoArgs('',     3,     '   ');
@@ -2708,7 +2707,7 @@ private class ApexLangUtilsTest {
             + size + ') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
     
-    private static testmethod void testLeftPadThreeArgs(){
+    @isTest static void testLeftPadThreeArgs(){
         //test: global static String leftPad(String str, Integer size, String padStr) {
         assertLeftPadThreeArgs(null,     -1, null,     null);
         assertLeftPadThreeArgs('',         3,     'z',     'zzz'); 
@@ -2727,7 +2726,7 @@ private class ApexLangUtilsTest {
             + size + ',\'' + padStr + '\') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
     
-    private static testmethod void testRightPadTwoArgs(){
+    @isTest static void testRightPadTwoArgs(){
         //test: global static String rightPad(String str, Integer size) {
         assertRightPadTwoArgs(null,     -1, null);
         assertRightPadTwoArgs('',         3,     '   ');
@@ -2743,7 +2742,7 @@ private class ApexLangUtilsTest {
             + size + ') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
     
-    private static testmethod void testRightPadThreeArgs(){
+    @isTest static void testRightPadThreeArgs(){
         //test: global static String rightPad(String str, Integer size, String padStr) {
         assertRightPadThreeArgs(null,     -1, null,     null);
         assertRightPadThreeArgs('',     3,     '',     '   ');
@@ -2761,7 +2760,7 @@ private class ApexLangUtilsTest {
             + size + ',\'' + padStr + '\') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
 
-    private static testmethod void testGetCommonPrefix(){
+    @isTest static void testGetCommonPrefix(){
         //test: global static String getCommonPrefix(List<String> strs) {
         assertGetCommonPrefix(null,                                             '');
         assertGetCommonPrefix(null,                                             '');
@@ -2789,7 +2788,7 @@ private class ApexLangUtilsTest {
             + ') returned \'' + actual + '\', expected \'' + expected + '\'');
     }
 
-    private static testmethod void testIndexOfDifferenceArrayInput(){
+    @isTest static void testIndexOfDifferenceArrayInput(){
         //test: global static Integer indexOfDifference(String[] strs) {
         assertIndexOfDifferenceArrayInput(null,                                             -1);
         assertIndexOfDifferenceArrayInput(new String[] {},                                     -1);
@@ -2817,7 +2816,7 @@ private class ApexLangUtilsTest {
     }
 
 
-    private static testmethod void testGetLevenshteinDistance(){
+    @isTest static void testGetLevenshteinDistance(){
         //test: global static Integer getLevenshteinDistance(String s, String t) {
         assertGetLevenshteinDistance(null,             null,         -1,    true);
         assertGetLevenshteinDistance(null,             null,         -1,    true);
@@ -2856,7 +2855,7 @@ private class ApexLangUtilsTest {
     }
 
 
-     private static testmethod void testIndexOfThreeArgs(){
+     @isTest static void testIndexOfThreeArgs(){
         //test: global static Integer indexOf(String str, String searchStr, Integer startPos) {
         assertIndexOfThreeArgs(null,         null,     -1, -1);
         assertIndexOfThreeArgs('',             '',     0,     0);
@@ -2876,7 +2875,7 @@ private class ApexLangUtilsTest {
             + searchStr + '\',' + startPos + ') returned ' + actual + '; expected ' + expected);
     }
 
-    private static testmethod void testOrdinalIndexOf(){
+    @isTest static void testOrdinalIndexOf(){
         //test: global static Integer ordinalIndexOf(String str, String searchStr, Integer ordinal) {
         assertOrdinalIndexOf(null,             null,     -1, -1);
         assertOrdinalIndexOf('',             '',     -1, -1);
@@ -2897,14 +2896,14 @@ private class ApexLangUtilsTest {
             + searchStr + '\',' + ordinal + ') returned ' + actual + '; expected ' + expected);
     }
 
-    private static testmethod void testValidateChar2(){
+    @isTest static void testValidateChar2(){
         try{
             ApexLangUtils.validateChar('ab');  //should throw exception since string has > 1 chars
             System.assert(false,'Character.validateChar(\'ab\') did not throw InvalidCharacterStringException');
         }catch(InvalidCharacterStringException e){}
     }
 
-    private static testmethod void testJoinArrayOneArg(){
+    @isTest static void testJoinArrayOneArg(){
         //test: global static String joinArray(Object[] objectArray) {
         assertJoinArrayOneArg(null, null);
         assertJoinArrayOneArg(new String[]{}, '');
@@ -2918,7 +2917,7 @@ private class ApexLangUtilsTest {
         System.assert(actual==expected, 'ApexLangUtils.joinArray(\'' + ApexLangUtils.toString(objectArray) + '\') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
 
-    private static testmethod void testJoinArrayTwoArgs(){
+    @isTest static void testJoinArrayTwoArgs(){
         //test: global static String joinArray(Object[] objectArray, String separator) {
         assertJoinArrayTwoArgs(null, null, null);
         assertJoinArrayTwoArgs(new String[]{}, null, '');
@@ -2934,7 +2933,7 @@ private class ApexLangUtilsTest {
             + separator + '\') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
 
-    private static testmethod void testJoinArrayFourArgs(){
+    @isTest static void testJoinArrayFourArgs(){
         //test: global static String joinArray(Object[] objectArray, String separator, Integer startIndex, Integer endIndex) {
         assertJoinArrayFourArgs(null, null, 0, 2, null);
         assertJoinArrayFourArgs(new String[]{}, null, 0, 1, '');
@@ -2961,7 +2960,7 @@ private class ApexLangUtilsTest {
             + separator + '\',' + startIndex + ',' + endIndex + ') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
 
-     private static testmethod void testJoinSetBlobSet(){ 
+     @isTest static void testJoinSetBlobSet(){ 
         //global static String joinSet(Set<Blob> blobSet, String separator)
         assertJoinSetBlobSet(null, '|', null);
         assertJoinSetBlobSet(new Set<Blob>{}, '|', '');
@@ -2971,7 +2970,7 @@ private class ApexLangUtilsTest {
         assertJoinSetBlobSet(new Set<Blob>{blob1,blob2}, '|', '\'' + blob1.toString() + '\'|\'' + blob2.toString() + '\'');
     }    
 
-    private static testmethod void testJoinSetBooleanSet(){ 
+    @isTest static void testJoinSetBooleanSet(){ 
         //global static String joinSet(Set<Boolean> booleanSet, String separator) 
         assertJoinSetBooleanSet(null, '|', null);
         assertJoinSetBooleanSet(new Set<Boolean>{}, '|', '');
@@ -2979,7 +2978,7 @@ private class ApexLangUtilsTest {
         assertJoinSetBooleanSet(new Set<Boolean>{true, false}, '|', 'false|true');
     }
     
-    private static testmethod void testJoinSetDateSet(){ 
+    @isTest static void testJoinSetDateSet(){ 
         //global static String joinSet(Set<Date> dateSet, String separator) 
         assertJoinSetDateSet(null, '|', null);
         assertJoinSetDateSet(new Set<Date>{}, '|', '');
@@ -2989,7 +2988,7 @@ private class ApexLangUtilsTest {
         assertJoinSetDateSet(new Set<Date>{date1,date2}, '|', ''+date1+'|'+date2+'' );
     }
     
-    private static testmethod void testJoinSetDatetimeSet(){ 
+    @isTest static void testJoinSetDatetimeSet(){ 
         //global static String joinSet(Set<Datetime> datetimeSet, String separator) 
         assertJoinSetDatetimeSet(null, '|', null);
         assertJoinSetDatetimeSet(new Set<Datetime>{}, '|', '');
@@ -2999,7 +2998,7 @@ private class ApexLangUtilsTest {
         assertJoinSetDatetimeSet(new Set<Datetime>{date1,date2}, '|', ''+date1+'|'+date2+'' );
     }
     
-    private static testmethod void testJoinSetDecimalSet(){ 
+    @isTest static void testJoinSetDecimalSet(){ 
         //global static String joinSet(Set<Decimal> decimalSet, String separator) 
         assertJoinSetDecimalSet(null, '|', null);
         assertJoinSetDecimalSet(new Set<Decimal>{}, '|', '');
@@ -3009,7 +3008,7 @@ private class ApexLangUtilsTest {
         assertJoinSetDecimalSet(new Set<Decimal>{dec1,dec2}, '|', '' + dec1 + '|' + dec2 + '');
     }
     
-    private static testmethod void testJoinSetDoubleSet(){ 
+    @isTest static void testJoinSetDoubleSet(){ 
         //global static String joinSet(Set<Double> doubleSet, String separator) 
         assertJoinSetDoubleSet(null, '|', null);
         assertJoinSetDoubleSet(new Set<Double>{}, '|', '');
@@ -3019,7 +3018,7 @@ private class ApexLangUtilsTest {
         assertJoinSetDoubleSet(new Set<Double>{doub1,doub2}, '|', '' + doub1 + '|' + doub2 + '');
     }
     
-    private static testmethod void testJoinSetIDSet(){ 
+    @isTest static void testJoinSetIDSet(){ 
         //global static String joinSet(Set<ID> idSet, String separator) 
         assertJoinSetIDSet(null, '|', null);
         assertJoinSetIDSet(new Set<ID>{}, '|', '');
@@ -3031,7 +3030,7 @@ private class ApexLangUtilsTest {
         assertJoinSetIDSet(new Set<ID>{acct1.id,acct2.id}, '|', '' + acct1.id + '|' + acct2.id + '');
     }
     
-    private static testmethod void testJoinSetIntegerSet(){ 
+    @isTest static void testJoinSetIntegerSet(){ 
         //global static String joinSet(Set<Integer> integerSet, String separator) 
         assertJoinSetIntegerSet(null, '|', null);
         assertJoinSetIntegerSet(new Set<Integer>{}, '|', '');
@@ -3041,7 +3040,7 @@ private class ApexLangUtilsTest {
         assertJoinSetIntegerSet(new Set<Integer>{int1,int2}, '|', '' + int1 + '|' + int2 + '' );
     }
     
-    private static testmethod void testJoinSetLongSet(){ 
+    @isTest static void testJoinSetLongSet(){ 
         //global static String joinSet(Set<Long> longSet, String separator) 
         assertJoinSetLongSet(null, '|', null);
         assertJoinSetLongSet(new Set<Long>{}, '|', '');
@@ -3051,7 +3050,7 @@ private class ApexLangUtilsTest {
         assertJoinSetLongSet(new Set<Long>{long1,long2}, '|', '' + long1 + '|' + long2 + '');
     }
     
-    private static testmethod void testJoinSetTimeSet(){ 
+    @isTest static void testJoinSetTimeSet(){ 
         //global static String joinSet(Set<Time> timeSet, String separator) 
         assertJoinSetTimeSet(null, '|', null);
         assertJoinSetTimeSet(new Set<Time>{}, '|', '');
@@ -3061,7 +3060,7 @@ private class ApexLangUtilsTest {
         assertJoinSetTimeSet(new Set<Time>{time1,time2}, '|', '' + time1 + '|' + time2 + '' );
     }
     
-    private static testmethod void testJoinSetStringSet(){ 
+    @isTest static void testJoinSetStringSet(){ 
         //global static String joinSet(Set<String> stringSet, String separator) 
         assertJoinSetStringSet(null, '|', null);
         assertJoinSetStringSet(new Set<String>{}, '|', '');
@@ -3087,7 +3086,7 @@ private class ApexLangUtilsTest {
         return EncodingUtil.base64Decode(''+System.currentTimeMillis()+Math.roundToLong(Math.random()*10000));    
     }
 
-    private static testmethod void testReplaceChars(){
+    @isTest static void testReplaceChars(){
         //test: global static String replaceChars(String str, String searchChars, String replaceChars)
         assertReplaceChars(null, null, null, null);
         assertReplaceChars('', null, null, '');
@@ -3106,7 +3105,7 @@ private class ApexLangUtilsTest {
             + searchChars + '\',\'' + replaceChars + '\') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
     
-    private static testmethod void testJoinSet(){
+    @isTest static void testJoinSet(){
         //test: global static String joinSet(Set<Object> objectSet, String separator){
         assertJoinSet(null, null, null);
         assertJoinSet(new Set<Object>(), ':', null);
@@ -3130,7 +3129,7 @@ private class ApexLangUtilsTest {
                 actual + '\'; expected \'' + expected + '\'');
     }
 
-    private static testmethod void testSubstringTwoArgs(){
+    @isTest static void testSubstringTwoArgs(){
         //test: global static String substring(String str, Integer startIndex) {
         assertSubstringTwoArgs(null, -1, null);
         assertSubstringTwoArgs('', -2, '');
@@ -3150,7 +3149,7 @@ private class ApexLangUtilsTest {
             + startIndex + ') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
     
-    private static testmethod void testSubstringThreeArgs(){
+    @isTest static void testSubstringThreeArgs(){
         //test: global static String substring(String str, Integer startIndex, Integer endIndex) {
         assertSubstringThreeArgs(null, -1, -1, null);
         assertSubstringThreeArgs('', -1, -1, '');
@@ -3176,7 +3175,7 @@ private class ApexLangUtilsTest {
     /* StringApexLangUtils2 tests*/
 
 
-    private static testmethod void testLeft(){
+    @isTest static void testLeft(){
         //test: global static String left(String str, Integer len) {
         assertLeft(null, -1, null);
         assertLeft(null, 0, null);
@@ -3194,7 +3193,7 @@ private class ApexLangUtilsTest {
             + len + ') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
 
-    private static testmethod void testRepeat(){
+    @isTest static void testRepeat(){
         //test: global static String repeat(String str, Integer repeat) 
         assertRepeat(null, 2, null);
         assertRepeat('', 0, '');
@@ -3211,7 +3210,7 @@ private class ApexLangUtilsTest {
     }
 
 
-    private static testmethod void testMid(){
+    @isTest static void testMid(){
         //test: global static String mid(String str, Integer pos, Integer len) {
         assertMid(null, 0, 0, null);
         assertMid('', 0, -1, '');
@@ -3230,7 +3229,7 @@ private class ApexLangUtilsTest {
             + ',' + len + ') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
 
-    private static testmethod void testOverlay(){
+    @isTest static void testOverlay(){
         //test: global static String overlay(String str, String overlay, Integer startIndex, Integer endIndex) {
         assertOverlay(null, null, 0, 0, null);
         assertOverlay('', 'abc', 0, 0, 'abc');
@@ -3252,7 +3251,7 @@ private class ApexLangUtilsTest {
             + '\',' + startIndex + ',' + endIndex + ') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
     
-    private static testmethod void testRemove(){
+    @isTest static void testRemove(){
         //test: global static String remove(String str, String remove) {
         assertRemove(null, null, null);
         assertRemove('', null, '');
@@ -3269,7 +3268,7 @@ private class ApexLangUtilsTest {
             + '\') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
 
-    private static testmethod void testRemoveStart(){
+    @isTest static void testRemoveStart(){
         //test: global static String removeStart(String str, String remove) {
         assertRemoveStart(null, null, null);
         assertRemoveStart('', null, '');
@@ -3286,7 +3285,7 @@ private class ApexLangUtilsTest {
             + '\') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
 
-    private static testmethod void testRemoveStartIgnoreCase(){
+    @isTest static void testRemoveStartIgnoreCase(){
         //test: global static String removeStartIgnoreCase(String str, String remove) {
         assertRemoveStartIgnoreCase(null, null, null);
         assertRemoveStartIgnoreCase('', null, '');
@@ -3304,7 +3303,7 @@ private class ApexLangUtilsTest {
             + '\') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
 
-    private static testmethod void testRemoveEnd(){
+    @isTest static void testRemoveEnd(){
         //test: global static String removeEnd(String str, String remove) {
         assertRemoveEnd(null, null, null);
         assertRemoveEnd('', null, '');
@@ -3321,7 +3320,7 @@ private class ApexLangUtilsTest {
             + '\') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
 
-    private static testmethod void testRemoveEndIgnoreCase(){
+    @isTest static void testRemoveEndIgnoreCase(){
         //test: global static String removeEndIgnoreCase(String str, String remove) {
         assertRemoveEndIgnoreCase(null, null, null);
         assertRemoveEndIgnoreCase('', null, '');
@@ -3338,7 +3337,7 @@ private class ApexLangUtilsTest {
             + '\') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
 
-    private static testmethod void testRegionMatchesCaseSensitive(){
+    @isTest static void testRegionMatchesCaseSensitive(){
         //test: global static boolean regionMatches(String str, boolean ignoreCase,
         //            Integer toffset, String other, Integer ooffset, Integer len){
         assertRegionMatchesCaseSensitive(null, 0, null, 0, 0, true);
@@ -3354,7 +3353,7 @@ private class ApexLangUtilsTest {
             + ') returned ' + actual + '; expected ' + expected );
     }
 
-    private static testmethod void testRegionMatchesCaseInsensitive(){
+    @isTest static void testRegionMatchesCaseInsensitive(){
         //test: global static boolean regionMatches(String str, boolean ignoreCase,
         //            Integer toffset, String other, Integer ooffset, Integer len){
         assertRegionMatchesCaseInsensitive(null, 0, null, 0, 0, true);
@@ -3370,7 +3369,7 @@ private class ApexLangUtilsTest {
             + ') returned ' + actual + '; expected ' + expected );
     }
 
-    private static testmethod void testRegionMatches(){
+    @isTest static void testRegionMatches(){
         //test: global static boolean regionMatches(String str, boolean ignoreCase,
         //            Integer toffset, String other, Integer ooffset, Integer len){
         assertRegionMatches(null, false, 0, null, 0, 0, true);
@@ -3394,7 +3393,7 @@ private class ApexLangUtilsTest {
             + ') returned ' + actual + '; expected ' + expected );
     }
 
-    private static testmethod void testReplaceThreeArgs(){
+    @isTest static void testReplaceThreeArgs(){
         //test: global static String replace(String text, String searchString, String replacement) {
 
         assertReplaceThreeArgs(null, null, null, null);
@@ -3413,7 +3412,7 @@ private class ApexLangUtilsTest {
             + searchString + '\',\'' + replacement + '\') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
 
-    private static testmethod void testReplaceFourArgs(){
+    @isTest static void testReplaceFourArgs(){
         //test: global static String replace(String text, String searchString, String replacement, Integer max) {
         assertReplaceFourArgs(null, null, null, -1, null);
         assertReplaceFourArgs('', null, null, -1, '');
@@ -3435,7 +3434,7 @@ private class ApexLangUtilsTest {
             + searchString + '\',\'' + replacement + '\',' + max + ') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
 
-    private static testmethod void testReplaceEachThreeArgs(){
+    @isTest static void testReplaceEachThreeArgs(){
         //test: global static String replaceEach(String text, String[] searchList, String[] replacementList) {
         assertReplaceEachThreeArgs(null, null, null, null);
         assertReplaceEachThreeArgs('', null, null, '');
@@ -3455,7 +3454,7 @@ private class ApexLangUtilsTest {
             + ApexLangUtils.toString(searchList) + ',' + ApexLangUtils.toString(replacementList) + ') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
 
-    private static testmethod void testReplaceEachRepeatedly(){
+    @isTest static void testReplaceEachRepeatedly(){
         //test: global static String replaceEachRepeatedly(String text, String[] searchList, String[] replacementList, Boolean repeat) {
         assertReplaceEachRepeatedly(null, null, null, false,null);
         assertReplaceEachRepeatedly('', null, null, false,'');
@@ -3477,7 +3476,7 @@ private class ApexLangUtilsTest {
             + ApexLangUtils.toString(searchList) + ',' + ApexLangUtils.toString(replacementList) + ') returned \'' + actual + '\'; expected \'' + expected + '\'');
     } 
  
-    private static testmethod void testReplaceEachFiveArgExceptions(){
+    @isTest static void testReplaceEachFiveArgExceptions(){
         //test: global static String replaceEachRepeatedly(String text, String[] searchList, String[] replacementList, Boolean repeat) {
         IllegalStateException illegalState = null;
         try{
@@ -3496,7 +3495,7 @@ private class ApexLangUtilsTest {
         System.assertNotEquals(null,illegalArgument);
     }
 
-    private static testmethod void testStartsWith(){
+    @isTest static void testStartsWith(){
         //test:global static boolean startsWith(String str, String prefix) 
         assertStartsWith(null, null, true);
         assertStartsWith(null, 'abcdef', false);
@@ -3512,7 +3511,7 @@ private class ApexLangUtilsTest {
             + '\') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
 
-    private static testmethod void testStartsWithIgnoreCase(){
+    @isTest static void testStartsWithIgnoreCase(){
         //test:global static boolean startsWithIgnoreCase(String str, String prefix) 
         assertStartsWithIgnoreCase(null, null, true);
         assertStartsWithIgnoreCase(null, 'abcdef', false);        assertStartsWithIgnoreCase('abc', null, false);
@@ -3526,7 +3525,7 @@ private class ApexLangUtilsTest {
             + '\') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
 
-    private static testmethod void testReplaceOnce(){
+    @isTest static void testReplaceOnce(){
         //test: global static String replaceOnce(String text, String searchString, String replacement)
         assertReplaceOnce(null, null, null, null);
         assertReplaceOnce('', null, null, '');
@@ -3544,7 +3543,7 @@ private class ApexLangUtilsTest {
             + '\',\'' + replacement + '\') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
     
-    private static testmethod void testReverse(){
+    @isTest static void testReverse(){
         //test: global static String reverse(String str)
         assertReverse(null, null);
         assertReverse('', '');
@@ -3557,7 +3556,7 @@ private class ApexLangUtilsTest {
             + '\') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
     
-    private static testmethod void testReverseDelimited(){
+    @isTest static void testReverseDelimited(){
         //test: global static String reverseDelimited(String str, String separatorChar) 
         assertReverseDelimited(null, null, null);
         assertReverseDelimited('', null, '');
@@ -3571,7 +3570,7 @@ private class ApexLangUtilsTest {
             + '\') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
     
-    private static testmethod void testRight(){
+    @isTest static void testRight(){
         //test: global static String right(String str, Integer len) 
         assertRight(null, 0, null);
         assertRight('abcdefg', -1, '');
@@ -3587,7 +3586,7 @@ private class ApexLangUtilsTest {
             + ') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }
     
-    private static testmethod void testSplitByCharacterTypeCamelCase(){
+    @isTest static void testSplitByCharacterTypeCamelCase(){
         //test: global static String[] splitByCharacterTypeCamelCase(String str)
         assertSplitByCharacterTypeCamelCase(null,             null);
         assertSplitByCharacterTypeCamelCase('',             new String[]{});
@@ -3604,7 +3603,7 @@ private class ApexLangUtilsTest {
         ApexLangUtils.AssertArraysAreEqual(expected,ApexLangUtils.splitByCharacterTypeCamelCase(str));
     }
     
-    private static testmethod void testSplitByCharacterType(){
+    @isTest static void testSplitByCharacterType(){
         //test:  global static String[] splitByCharacterType(String str)
         assertSplitByCharacterType(null,             null);
         assertSplitByCharacterType('',                 new String[]{});
@@ -3621,7 +3620,7 @@ private class ApexLangUtilsTest {
         ApexLangUtils.AssertArraysAreEqual(expected,ApexLangUtils.splitByCharacterType(str));
     }
      
-    private static testmethod void testTrimToEmpty(){
+    @isTest static void testTrimToEmpty(){
         //test: global static String trimToEmpty(String str) {
         assertTrimToEmpty(null, '');
         assertTrimToEmpty('', '');
@@ -3636,7 +3635,7 @@ private class ApexLangUtilsTest {
             + actual + '\'; expected \'' + expected + '\'');
     }
 
-    private static testmethod void testTrimToNull(){
+    @isTest static void testTrimToNull(){
         //test:  global static String trimToNull(String str) {
         assertTrimToNull(null, null);
         assertTrimToNull('', null);
@@ -3651,7 +3650,7 @@ private class ApexLangUtilsTest {
             + actual + '\'; expected \'' + expected + '\'');
     }    
     
-    private static testmethod void testStripOneArg(){
+    @isTest static void testStripOneArg(){
         //test: global static String strip(String str)
         assertStripOneArg(null, null);
         assertStripOneArg('', '');
@@ -3669,7 +3668,7 @@ private class ApexLangUtilsTest {
             + actual + '\'; expected \'' + expected + '\'');
     }    
     
-    private static testmethod void testStripToNull(){
+    @isTest static void testStripToNull(){
         //test: global static String stripToNull(String str) {
         assertStripToNull(null,null);
         assertStripToNull('',null);
@@ -3687,7 +3686,7 @@ private class ApexLangUtilsTest {
             + actual + '\'; expected \'' + expected + '\'');
     }    
     
-    private static testmethod void testStripToEmpty(){
+    @isTest static void testStripToEmpty(){
         //test: global static String stripToEmpty(String str) {
         assertStripToEmpty(null, '');
         assertStripToEmpty('', '');
@@ -3705,7 +3704,7 @@ private class ApexLangUtilsTest {
             + actual + '\'; expected \'' + expected + '\'');
     }    
 
-    private static testmethod void testStripTwoArgs(){
+    @isTest static void testStripTwoArgs(){
         //test: global static String strip(String str, String stripChars)
         assertStripTwoArgs(null, null, null);
         assertStripTwoArgs('', null, '');
@@ -3722,7 +3721,7 @@ private class ApexLangUtilsTest {
             + actual + '\'; expected \'' + expected + '\'');
     }   
 
-    private static testmethod void testStripStart(){
+    @isTest static void testStripStart(){
         //test:  global static String stripStart(String str, String stripChars)
         assertStripStart(null, null, null);
         assertStripStart('', null, '');
@@ -3740,7 +3739,7 @@ private class ApexLangUtilsTest {
             + '\') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }              
 
-    private static testmethod void testStripEnd(){
+    @isTest static void testStripEnd(){
         //test: global static String stripEnd(String str, String stripChars)
         assertStripEnd(null, null, null);
         assertStripEnd('', null, '');
@@ -3758,7 +3757,7 @@ private class ApexLangUtilsTest {
             + '\') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }  
 
-    private static testmethod void testStripAllOneArg(){
+    @isTest static void testStripAllOneArg(){
         //test: global static String[] stripAll(String[] strs)
         assertStripAllOneArg(null, null);
         assertStripAllOneArg(new String[]{}, new String[]{});
@@ -3770,7 +3769,7 @@ private class ApexLangUtilsTest {
         ApexLangUtils.assertArraysAreEqual(expected,ApexLangUtils.stripAll(strs));
     } 
      
-    private static testmethod void testStripAllTwoArgs(){
+    @isTest static void testStripAllTwoArgs(){
         //test: global static String[] stripAll(String[] strs, String stripChars)
         assertStripAllTwoArgs(null, null, null);
         assertStripAllTwoArgs(new String[]{}, null, new String[]{});
@@ -3784,7 +3783,7 @@ private class ApexLangUtilsTest {
         ApexLangUtils.assertArraysAreEqual(expected,ApexLangUtils.stripAll(strs,stripChars));
     }
     
-    private static testmethod void testSubstringBefore(){
+    @isTest static void testSubstringBefore(){
         //test: global static String substringBefore(String str, String separator)
         assertSubstringBefore(null, null, null);
         assertSubstringBefore('', null, '');
@@ -3802,7 +3801,7 @@ private class ApexLangUtilsTest {
             + '\') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }  
 
-    private static testmethod void testSubstringAfter(){
+    @isTest static void testSubstringAfter(){
         //test: global static String substringAfter(String str, String separator)
         assertSubstringAfter(null, null, null);
         assertSubstringAfter('', null, '');
@@ -3821,7 +3820,7 @@ private class ApexLangUtilsTest {
             + '\') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }  
 
-    private static testmethod void testSubstringBeforeLast(){
+    @isTest static void testSubstringBeforeLast(){
         //test: global static String substringBeforeLast(String str, String separator)
         assertSubstringBeforeLast(null, null, null);
         assertSubstringBeforeLast('', null, '');
@@ -3839,7 +3838,7 @@ private class ApexLangUtilsTest {
             + '\') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }  
 
-    private static testmethod void testSubstringAfterLast(){
+    @isTest static void testSubstringAfterLast(){
         //test: global static String substringAfterLast(String str, String separator)
         assertSubstringAfterLast(null, null, null);
         assertSubstringAfterLast('', null, '');
@@ -3858,7 +3857,7 @@ private class ApexLangUtilsTest {
             + '\') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }  
 
-    private static testmethod void testSubstringBetweenTwoArgs(){
+    @isTest static void testSubstringBetweenTwoArgs(){
         //test: global static String substringBetween(String str, String tag)
         assertSubstringBetweenTwoArgs(null, null, null);
         assertSubstringBetweenTwoArgs('', '', '');
@@ -3874,7 +3873,7 @@ private class ApexLangUtilsTest {
             + '\') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }  
 
-    private static testmethod void testSubstringBetweenThreeArgs(){
+    @isTest static void testSubstringBetweenThreeArgs(){
         //test: global static String substringBetween(String str, String open, String close)
         assertSubstringBetweenThreeArgs('wx[b]yz', '[', ']', 'b');
         assertSubstringBetweenThreeArgs(null, null, null, null);
@@ -3894,7 +3893,7 @@ private class ApexLangUtilsTest {
             + '\') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }  
 
-    private static testmethod void testSubstringsBetween(){
+    @isTest static void testSubstringsBetween(){
         //test: global static String[] substringsBetween(String str, String open, String close)
         assertSubstringsBetween('[a][b][c]', '[', ']', new String[]{'a','b','c'});
         assertSubstringsBetween(null, null, null, null);
@@ -3907,7 +3906,7 @@ private class ApexLangUtilsTest {
         ApexLangUtils.assertArraysAreEqual(expected, ApexLangUtils.substringsBetween(str,open,close));
     }  
 
-    private static testmethod void testEnsureStringStartsEndsWithChar(){
+    @isTest static void testEnsureStringStartsEndsWithChar(){
         //test: global static String ensureStringStartsEndsWithChar(String str, String charc){
         assertEnsureStringStartsEndsWithChar(null, null, null);
         assertEnsureStringStartsEndsWithChar(null, 'abc', null);
@@ -3922,7 +3921,7 @@ private class ApexLangUtilsTest {
             + '\') returned \'' + actual + '\'; expected \'' + expected + '\'');
     }  
 
-    private static testmethod void testToCharArray(){
+    @isTest static void testToCharArray(){
         //test: global static String[] toCharArray(String str){
         ApexLangUtils.assertArraysAreEqual(new String[]{},ApexLangUtils.toCharArray(null));
         ApexLangUtils.assertArraysAreEqual(new String[]{},ApexLangUtils.toCharArray(''));
@@ -3931,13 +3930,13 @@ private class ApexLangUtilsTest {
         ApexLangUtils.assertArraysAreEqual(new String[]{'a','b','c'},ApexLangUtils.toCharArray('abc'));
     }
 
-    private static testmethod void testTrimAll_Set(){
+    @isTest static void testTrimAll_Set(){
         Set<String> NULL_SET = null;
         System.assertEquals(null,ApexLangUtils.trimAll(NULL_SET));
         ApexLangUtils.assertEquals(new Set<String>{'a','b'},ApexLangUtils.trimAll(new Set<String>{' a ',' b '}));
     }
 
-    private static testmethod void testTrimAll_List(){
+    @isTest static void testTrimAll_List(){
         List<String> NULL_LIST = null;
         System.assertEquals(null,ApexLangUtils.trimAll(NULL_LIST));
         ApexLangUtils.assertArraysAreEqual(new List<String>{'a','b'},ApexLangUtils.trimAll(new List<String>{' a ',' b '}));
@@ -3947,7 +3946,7 @@ private class ApexLangUtilsTest {
 
     /* WordApexLangUtils Tests */
     
-    private static testmethod void testWrap_StringInt() {
+    @isTest static void testWrap_StringInt() {
         System.System.assertEquals(null, ApexLangUtils.wrap(null, 20));
         System.System.assertEquals(null, ApexLangUtils.wrap(null, -1));
         
@@ -3974,7 +3973,7 @@ private class ApexLangUtilsTest {
         System.System.assertEquals(expected, ApexLangUtils.wrap(input, 20));
     }
     
-    private static testmethod void testWrap_StringIntStringBoolean() {
+    @isTest static void testWrap_StringIntStringBoolean() {
         System.assertEquals(null, ApexLangUtils.wrap(null, 20, '\n', false));
         System.assertEquals(null, ApexLangUtils.wrap(null, 20, '\n', true));
         System.assertEquals(null, ApexLangUtils.wrap(null, 20, null, true));
@@ -4052,7 +4051,7 @@ private class ApexLangUtilsTest {
 //        System.err.println(ApexLangUtils.wrap(input, 20, '\n', false));
     }
     
-    private static testmethod void testCapitalize_String() {
+    @isTest static void testCapitalize_String() {
         System.assertEquals(null, ApexLangUtils.capitalize(null));
         System.assertEquals('', ApexLangUtils.capitalize(''));
         System.assertEquals('  ', ApexLangUtils.capitalize('  '));
@@ -4065,7 +4064,7 @@ private class ApexLangUtilsTest {
         System.assertEquals('I AM HERE 123', ApexLangUtils.capitalize('I AM HERE 123') );
     }
     
-    private static testmethod void testCapitalizeWithDelimiters_String() {
+    @isTest static void testCapitalizeWithDelimiters_String() {
         System.assertEquals(null, ApexLangUtils.capitalize(null, null));
         System.assertEquals('', ApexLangUtils.capitalize('', new String[0]));
         System.assertEquals('  ', ApexLangUtils.capitalize('  ', new String[0]));
@@ -4082,7 +4081,7 @@ private class ApexLangUtilsTest {
         System.assertEquals('I Am.fine', ApexLangUtils.capitalize('i am.fine', null) );
     }
 
-    private static testmethod void testCapitalizeFully_String() {
+    @isTest static void testCapitalizeFully_String() {
         System.assertEquals(null, ApexLangUtils.capitalizeFully(null));
         System.assertEquals('', ApexLangUtils.capitalizeFully(''));
         System.assertEquals('  ', ApexLangUtils.capitalizeFully('  '));
@@ -4095,7 +4094,7 @@ private class ApexLangUtilsTest {
         System.assertEquals('I Am Here 123', ApexLangUtils.capitalizeFully('I AM HERE 123') );
     }
     
-    private static testmethod void testCapitalizeFullyWithDelimiters_String() {
+    @isTest static void testCapitalizeFullyWithDelimiters_String() {
         System.assertEquals(null, ApexLangUtils.capitalizeFully(null, null));
         System.assertEquals('', ApexLangUtils.capitalizeFully('', new String[0]));
         System.assertEquals('  ', ApexLangUtils.capitalizeFully('  ', new String[0]));
@@ -4112,7 +4111,7 @@ private class ApexLangUtilsTest {
         System.assertEquals('I Am.fine', ApexLangUtils.capitalizeFully('i am.fine', null) );
     }
 
-    private static testmethod void testUncapitalize_String() {
+    @isTest static void testUncapitalize_String() {
         System.assertEquals(null, ApexLangUtils.uncapitalize(null));
         System.assertEquals('', ApexLangUtils.uncapitalize(''));
         System.assertEquals('  ', ApexLangUtils.uncapitalize('  '));
@@ -4125,7 +4124,7 @@ private class ApexLangUtilsTest {
         System.assertEquals('i aM hERE 123', ApexLangUtils.uncapitalize('I AM HERE 123') );
     }
     
-    private static testmethod void testUncapitalizeWithDelimiters_String() {
+    @isTest static void testUncapitalizeWithDelimiters_String() {
         System.assertEquals(null, ApexLangUtils.uncapitalize(null, null));
         System.assertEquals('', ApexLangUtils.uncapitalize('', new String[0]));
         System.assertEquals('  ', ApexLangUtils.uncapitalize('  ', new String[0]));
@@ -4142,7 +4141,7 @@ private class ApexLangUtilsTest {
         System.assertEquals('i aM.FINE', ApexLangUtils.uncapitalize('I AM.FINE', null) );
     }
 
-    private static testmethod void testInitials_String() {
+    @isTest static void testInitials_String() {
         System.assertEquals(null, ApexLangUtils.initials(null));
         System.assertEquals('', ApexLangUtils.initials(''));
         System.assertEquals('', ApexLangUtils.initials('  '));
@@ -4155,7 +4154,7 @@ private class ApexLangUtilsTest {
         System.assertEquals('iah1', ApexLangUtils.initials('i am here 123'));
     }
 
-    private static testmethod void testInitials_String_charArray() {
+    @isTest static void testInitials_String_charArray() {
         String[] anArray = null;
         System.assertEquals(null, ApexLangUtils.initials(null, anArray));
         System.assertEquals('', ApexLangUtils.initials('', anArray));
@@ -4235,7 +4234,7 @@ private class ApexLangUtilsTest {
         System.assertEquals('i2', ApexLangUtils.initials('i am here 123', anArray));
     }
 
-    private static testmethod void testSwapCase_String() {
+    @isTest static void testSwapCase_String() {
         System.assertEquals(null, ApexLangUtils.swapCase(null));
         System.assertEquals('', ApexLangUtils.swapCase(''));
         System.assertEquals('  ', ApexLangUtils.swapCase('  '));
@@ -4252,7 +4251,7 @@ private class ApexLangUtilsTest {
         System.assertEquals(expect, ApexLangUtils.swapCase(test));
     }
 
-    private static testmethod void testAbbreviate() {
+    @isTest static void testAbbreviate() {
         // check null and empty are returned respectively
         System.assertEquals(null,ApexLangUtils.abbreviate(null, 1,-1,''));
         System.assertEquals(ApexLangUtils.EMPTY, ApexLangUtils.abbreviate('', 1,-1,''));
@@ -4293,7 +4292,7 @@ private class ApexLangUtilsTest {
     /* ArrayApexLangUtils Tests */
 
     
-    private static testmethod void testReverseObject(){
+    @isTest static void testReverseObject(){
         //test: global static Object[] reverse(Object[] anArray) 
         Object[] nullArray = null;
         ApexLangUtils.assertArraysAreEqual(null,ApexLangUtils.reverse(nullArray)); 
@@ -4303,7 +4302,7 @@ private class ApexLangUtilsTest {
         ApexLangUtils.assertArraysAreEqual(new String[]{'a', 'b', 'c'},ApexLangUtils.reverse(new String[]{'c','b','a'}));
     }
 
-    private static testmethod void testReverseSObject(){
+    @isTest static void testReverseSObject(){
         //test: global static SObject[] reverse(SObject[] anArray) 
         SObject[] nullArray = null;
         Account x = new Account(name='x');
@@ -4316,7 +4315,7 @@ private class ApexLangUtilsTest {
         ApexLangUtils.assertArraysAreEqual(new Account[]{x,y,z},ApexLangUtils.reverse(new Account[]{z,y,x}));
     }
 
-    private static testmethod void testIsEmpty2(){
+    @isTest static void testIsEmpty2(){
         //test: global static Boolean isEmpty(Object[] objectArray){
         String[] aNull = null;
         Account[] aNull2 = null;
@@ -4338,7 +4337,7 @@ private class ApexLangUtilsTest {
         System.assertEquals(false,    ApexLangUtils.isEmpty(new DecimalRange[]{new DecimalRange(1,1)}));  
     }
     
-    private static testmethod void testIsNotEmpty2(){
+    @isTest static void testIsNotEmpty2(){
         //test: global static Boolean isNotEmpty(Object[] objectArray){
         String[] aNull = null;
         Account[] aNull2 = null;
@@ -4360,7 +4359,7 @@ private class ApexLangUtilsTest {
         System.assertEquals(true,    ApexLangUtils.isNotEmpty(new DecimalRange[]{new DecimalRange(1,1)}));  
     }
     
-    private static testmethod void testPluck(){
+    @isTest static void testPluck(){
         //test: global static Object[] pluck(SObject[] objectArray, String fieldName)
         assertPluck(null,'name',new Object[]{});
         assertPluck(new Account[]{new Account(name='abc123'),new Account(name='xyz456')},null,new Object[]{});
@@ -4373,7 +4372,7 @@ private class ApexLangUtilsTest {
         ApexLangUtils.assertArraysAreEqual(expected, actual);    
     }
 
-    private static testmethod void testMergeObjectArrays(){
+    @isTest static void testMergeObjectArrays(){
         //test: global static Object[] mergex(Object[] array1, Object[] array2)
         Object[] nullArray = null;
         System.assertEquals(null,ApexLangUtils.mergex(nullArray,nullArray));
@@ -4386,7 +4385,7 @@ private class ApexLangUtilsTest {
         ApexLangUtils.assertArraysAreEqual(new Object[]{x,y,z,ten},ApexLangUtils.mergex(new Object[]{x,y},new Object[]{z,ten}));
     }    
     
-    private static testmethod void testMergeSObjectArrays(){
+    @isTest static void testMergeSObjectArrays(){
         //test: global static SObject[] mergex(SObject[] array1, SObject[] array2)
         SObject[] nullArray = null;
         System.assertEquals(null,ApexLangUtils.mergex(nullArray,nullArray));
@@ -4400,7 +4399,7 @@ private class ApexLangUtilsTest {
         ApexLangUtils.assertArraysAreEqual(new Account[]{x,y,z,ten},ApexLangUtils.mergex(new Account[]{x,y},new Account[]{z,ten}));
     }    
     
-    private static testmethod void testCreateEmptySObjectList(){
+    @isTest static void testCreateEmptySObjectList(){
         //test: global static List<SObject> createEmptySObjectList(SObject prototype)
         System.assertEquals(null,ApexLangUtils.createEmptySObjectList(null));
         ApexLangUtils.assertArraysAreEqual(new Account[]{},ApexLangUtils.createEmptySObjectList(new Account()));
@@ -4408,7 +4407,7 @@ private class ApexLangUtilsTest {
 
     
     
-    private static testmethod void testQSortSObjects(){
+    @isTest static void testQSortSObjects(){
         List<Account> listToSort = new Account[]{new Account(name='test9'),
                                                  new Account(name='test5'),
                                                  new Account(name='test3'),
@@ -4425,7 +4424,7 @@ private class ApexLangUtilsTest {
         System.assertEquals('test3', listToSort[2].Name); 
         
     }
-    private static testmethod void testQSortForceDotComPrimitives(){
+    @isTest static void testQSortForceDotComPrimitives(){
         List<Double> listToSort = new Double[]{4,1.22,-5.4,1.22,3.2};
         ApexLangUtils.qsort(listToSort);
         System.assertNotEquals(null, listToSort);
@@ -4448,7 +4447,7 @@ private class ApexLangUtilsTest {
         System.assertEquals(-5.4,     listToSort[4]);
     }  
     
-    private static testmethod void testQSortCustomClasses(){
+    @isTest static void testQSortCustomClasses(){
         DecimalRange r1 = new DecimalRange(-10,10);
         DecimalRange r2 = new DecimalRange(1,2);
         DecimalRange r3 = new DecimalRange(1.3,10);
@@ -4465,7 +4464,7 @@ private class ApexLangUtilsTest {
         System.assertEquals(r3.min(), listToSort.get(2).min());
     }  
 
-    private static testmethod void testToString(){
+    @isTest static void testToString(){
         List<Object> aList = null;
         ApexLangUtils.toString(aList);
         aList = new DecimalRange[]{};
@@ -4474,7 +4473,7 @@ private class ApexLangUtilsTest {
         ApexLangUtils.toString(aList);
     }
 
-    private static testmethod void testMergeForceDotComPrimitives(){
+    @isTest static void testMergeForceDotComPrimitives(){
         List<Object> l1 = new List<Object>();
         for(Integer i = 0; i < ApexLangUtils.MAX_NUMBER_OF_ELEMENTS_IN_LIST; i++){
             l1.add(i);
@@ -4496,7 +4495,7 @@ private class ApexLangUtilsTest {
         System.assertEquals(4,merged.get(3));
     }
     
-    private static testmethod void testSubsetCustomClasses(){
+    @isTest static void testSubsetCustomClasses(){
         Object[] iobjs = new DecimalRange[]{
             new DecimalRange(1,1),new DecimalRange(2,2),new DecimalRange(3,3)};
         List<Object> returned = ApexLangUtils.subset(iobjs, 2);
@@ -4507,7 +4506,7 @@ private class ApexLangUtilsTest {
         
     }
 
-    private static testmethod void testMergeCustomClasses(){
+    @isTest static void testMergeCustomClasses(){
         List<Object> l1 = new List<Object>();
         for(Integer i = 0; i < ApexLangUtils.MAX_NUMBER_OF_ELEMENTS_IN_LIST; i++){
             l1.add(new DecimalRange(i,i));
@@ -4529,7 +4528,7 @@ private class ApexLangUtilsTest {
         System.assertEquals(3,((DecimalRange)merged.get(2)).min());
     }
     
-    private static testmethod void testSubsetSObjects(){
+    @isTest static void testSubsetSObjects(){
         SObject[] sobjs = new Contact[]{
             new Contact(lastname='1'),
             new Contact(lastname='2'),
@@ -4541,7 +4540,7 @@ private class ApexLangUtilsTest {
         System.assertEquals('2',((Contact)returned.get(1)).lastname);
     }
 
-    private static testmethod void testMergeSObjects(){
+    @isTest static void testMergeSObjects(){
         List<SObject> l1 = new List<Contact>();
         for(Integer i = 0; i < ApexLangUtils.MAX_NUMBER_OF_ELEMENTS_IN_LIST; i++){
             l1.add(new Contact());
@@ -4569,7 +4568,7 @@ private class ApexLangUtilsTest {
         System.assertEquals('4',((Contact)merged.get(3)).lastname);
     }
     
-    private static testmethod void testSubsetForceDotComPrimitives(){
+    @isTest static void testSubsetForceDotComPrimitives(){
         Double[] prim = new Double[]{1,2,3};
         List<Object> returned = ApexLangUtils.subset(prim, 3);
         System.assertNotEquals(null,returned);
@@ -4626,11 +4625,11 @@ private class ApexLangUtilsTest {
     /* ArrayApexLangUtils Tests */
 
     /* SystemApexLangUtils Tests */
-    private static testmethod void testLimitDebug(){
+    @isTest static void testLimitDebug(){
         ApexLangUtils.debugLimits();
     }
     
-    private static testmethod void testTo18(){
+    @isTest static void testTo18(){
         //test: global static String to18(String the15charID){
         assertTo18('a0BA0000000L2Z','a0BA0000000L2Z');
         assertTo18('a0BA0000000L2ZC','a0BA0000000L2ZCMA0');
@@ -4644,7 +4643,7 @@ private class ApexLangUtilsTest {
     /* SystemApexLangUtils Tests */
     
     /* UserApexLangUtilsTest Tests */
-    private static testmethod void testIsCurrentUserSysAdminPositive(){
+    @isTest static void testIsCurrentUserSysAdminPositive(){
         //test: global static Boolean isCurrentUserSysAdmin(){
         //Amazingly, some orgs don't have users with a "System Administrator" profile and
         // as a result, the previous version of this test was failing.  As a result, I've
@@ -4654,14 +4653,14 @@ private class ApexLangUtilsTest {
         
     }
     
-	private static testmethod void testIsCurrentUserPortalUserPositive(){
+	@isTest static void testIsCurrentUserPortalUserPositive(){
         //test: global static Boolean isCurrentUserPortalUser(){
         System.assertEquals(false,ApexLangUtils.isCurrentUserPortalUser());
     }
     /* UserApexLangUtilsTest Tests */
     
     /* UrlApexLangUtilsTest Tests */
-    private static testmethod void testGetBase(){
+    @isTest static void testGetBase(){
         //test: global static String getBase(String url){
         assertGetBase(null, null);
         assertGetBase('', null);
@@ -4675,7 +4674,7 @@ private class ApexLangUtilsTest {
             + actual + '\'; expected \'' + expected + '\'');
     }
 
-    private static testmethod void testGetParams(){
+    @isTest static void testGetParams(){
         //global static Map<String,String> getParams(String url){
         Map<String,String> theMap = new Map<String,String>();
         assertGetParams(null, theMap);
@@ -4695,62 +4694,62 @@ private class ApexLangUtilsTest {
     /* TestApexLangUtils Tests */
 
 
-    private static testmethod void testAssertConfirmMessagesExist(){
+    @isTest static void testAssertConfirmMessagesExist(){
         //test: global static void assertConfirmMessagesExist()
         ApexLangUtils.addConfirm('test');
         ApexLangUtils.assertConfirmMessagesExist();
     }
 
-    private static testmethod void testAssertInfoMessagesExist(){
+    @isTest static void testAssertInfoMessagesExist(){
         //test: global static void assertInfoMessagesExist()
         ApexLangUtils.addInfo('test');
         ApexLangUtils.assertInfoMessagesExist();
     }
 
-    private static testmethod void testAssertWarningMessagesExist(){
+    @isTest static void testAssertWarningMessagesExist(){
         //test: global static void assertWarningMessagesExist()
         ApexLangUtils.addWarning('test');
         ApexLangUtils.assertWarningMessagesExist();
     }
 
-    private static testmethod void testAssertErrorMessagesExist(){
+    @isTest static void testAssertErrorMessagesExist(){
         //test: global static void assertErrorMessagesExist()
         ApexLangUtils.addError('test');
         ApexLangUtils.assertErrorMessagesExist();
     }
 
-    private static testmethod void testAssertFatalMessagesExist(){
+    @isTest static void testAssertFatalMessagesExist(){
         //test: global static void assertFatalMessagesExist()
         ApexLangUtils.addFatal('test');
         ApexLangUtils.assertFatalMessagesExist();
     }
 
-    private static testmethod void testAssertNoConfirmMessagesExist(){
+    @isTest static void testAssertNoConfirmMessagesExist(){
         //test: global static void assertNoConfirmMessagesExist()
         ApexLangUtils.assertNoConfirmMessagesExist();
     }
 
-    private static testmethod void testAssertNoInfoMessagesExist(){
+    @isTest static void testAssertNoInfoMessagesExist(){
         //test: global static void assertNoInfoMessagesExist(){ assertNoMessagesAtLevelExist(ApexPages.Severity.INFO); }
         ApexLangUtils.assertNoInfoMessagesExist();
     }
 
-    private static testmethod void testAssertNoWarningMessagesExist(){
+    @isTest static void testAssertNoWarningMessagesExist(){
         //test: global static void assertNoWarningMessagesExist(){ assertNoMessagesAtLevelExist(ApexPages.Severity.WARNING); }
         ApexLangUtils.assertNoWarningMessagesExist();
     }
 
-    private static testmethod void testAssertNoErrorMessagesExist(){
+    @isTest static void testAssertNoErrorMessagesExist(){
         //test: global static void assertNoErrorMessagesExist(){ assertNoMessagesAtLevelExist(ApexPages.Severity.ERROR); }
         ApexLangUtils.assertNoErrorMessagesExist();
     }
 
-    private static testmethod void testAssertNoFatalMessagesExist(){
+    @isTest static void testAssertNoFatalMessagesExist(){
         //test: global static void assertNoFatalMessagesExist(){ assertNoMessagesAtLevelExist(ApexPages.Severity.FATAL); }
         ApexLangUtils.assertNoFatalMessagesExist();
     }
     
-    private static testmethod void testGetObjectAcct(){
+    @isTest static void testGetObjectAcct(){
         Map<String,String> values = new Map<String,String>();
         values.put('name','Account xyz');
         List<SObject> records = ApexLangUtils.getObject(new Account(), 2, values);
@@ -4760,7 +4759,7 @@ private class ApexLangUtilsTest {
         }
     }
     
-    private static testmethod void testGetObjectContact(){
+    @isTest static void testGetObjectContact(){
         Map<String,String> values = new Map<String,String>();
         values.put('LastName','Account xyz');
         List<SObject> records = ApexLangUtils.getObject(new Contact(), 2, values);
@@ -4770,7 +4769,7 @@ private class ApexLangUtilsTest {
         }
     }
     
-    private static testmethod void testGetObjectDoInsert(){
+    @isTest static void testGetObjectDoInsert(){
         //test doInsert == false
         List<SObject> records = ApexLangUtils.getObject(new Account(), 2);
         System.assertEquals(2,records.size());
@@ -4791,7 +4790,7 @@ private class ApexLangUtilsTest {
         System.assertEquals(2,records.size());
     }
     
-    private static testmethod void testGetObjectBadInput(){
+    @isTest static void testGetObjectBadInput(){
         System.assertEquals(null,ApexLangUtils.getObject(null, -1, null, true));
         System.assertEquals(null,ApexLangUtils.getObject(null, 2, null, true));
         System.assert(ApexLangUtils.getObject(new Account(), -1, null, true).isEmpty());
@@ -4802,7 +4801,7 @@ private class ApexLangUtilsTest {
     
     /* SObjectApexLangUtils Tests */
     
-    private static testmethod void testIsAnyFieldBlank(){
+    @isTest static void testIsAnyFieldBlank(){
         //test: global static Boolean isAnyFieldBlank(SObject obj, String[] fields){
         System.assertEquals(false,ApexLangUtils.isAnyFieldBlank(null,null));
         System.assertEquals(false,ApexLangUtils.isAnyFieldBlank(new Account(),null));
@@ -4822,14 +4821,14 @@ private class ApexLangUtilsTest {
             new String[]{'name','description','phone'}));
     }
         
-    /*private static testmethod void testToString2(){
+    /*@isTest static void testToString2(){
         //test: global static String toString(SObject obj){
         System.assertEquals('null',ApexLangUtils.toString(null));
         Account account = new Account(name='Acme', Description='Acme Computer Corp',NumberOfEmployees=10);
         System.assertNotEquals(null,ApexLangUtils.toString(account));
     }*/
         
-    /*private static testmethod void testGetCachedDescribe(){
+    /*@isTest static void testGetCachedDescribe(){
         //test: global static Schema.DescribeSObjectResult getCachedDescribe(SObject obj){
         Schema.DescribeSObjectResult desc1 = ApexLangUtils.getCachedDescribe(new Account());
         SystemApexLangUtils.debugLimits();
@@ -4840,7 +4839,7 @@ private class ApexLangUtilsTest {
     */
     
     /*
-    private static testmethod void testSendNotificationEmailBadArgs(){
+    @isTest static void testSendNotificationEmailBadArgs(){
         //test: global static void sendNotificationEmail(SObject obj){
         Boolean exceptionCaught = false;
         try{
@@ -4870,7 +4869,7 @@ private class ApexLangUtilsTest {
         System.assertEquals(true,exceptionCaught);
     }    
 
-    private static testmethod void testSendNotificationEmail(){
+    @isTest static void testSendNotificationEmail(){
         //test: global static void sendNotificationEmail(SObject obj){
         QueueSobject q = null;
         try{
@@ -4883,14 +4882,14 @@ private class ApexLangUtilsTest {
     }     
     */   
     
-    private static testmethod void testCopyAllFieldsNullInputs(){
+    @isTest static void testCopyAllFieldsNullInputs(){
         //test: global static SObject copyFields(SObject source, SObject dest){
         System.assertEquals(null,ApexLangUtils.copyFields(null,null));
         System.assertEquals(null,ApexLangUtils.copyFields(new Account(),null));
         System.assertNotEquals(null,ApexLangUtils.copyFields(null,new Account()));
     }
     
-    private static testmethod void testCopyFieldsAccountToContact(){
+    @isTest static void testCopyFieldsAccountToContact(){
         //test: global static SObject copyFields(SObject source, SObject dest){
         final Account account = new Account();
         ApexLangUtils.putQuietly(account,'Description','test 123');
@@ -4909,7 +4908,7 @@ private class ApexLangUtilsTest {
             ApexLangUtils.getQuietly(contact,'Phone'));
     }
     
-    private static testmethod void testCopyFieldsAccountToAccount(){
+    @isTest static void testCopyFieldsAccountToAccount(){
         //test: global static SObject copyFields(SObject source, SObject dest){
         final Account account = new Account();
         ApexLangUtils.putQuietly(account,'Description','test 123');
@@ -4928,7 +4927,7 @@ private class ApexLangUtilsTest {
             ApexLangUtils.getQuietly(account2,'Phone'));
     }
     
-    private static testmethod void testCopyFieldsOpportunityToOpportunity(){
+    @isTest static void testCopyFieldsOpportunityToOpportunity(){
         //test: global static SObject copyFields(SObject source, SObject dest){
         final Opportunity opportunity1 = new Opportunity();
         ApexLangUtils.putQuietly(opportunity1,'Name','test 123');
@@ -4940,7 +4939,7 @@ private class ApexLangUtilsTest {
             ApexLangUtils.getQuietly(opportunity2,'Name'));
     }
     
-    private static testmethod void testCopyFieldsContactToContact(){
+    @isTest static void testCopyFieldsContactToContact(){
         //test: global static SObject copyFields(SObject source, SObject dest){
         final Contact contact1 = new Contact();
         ApexLangUtils.putQuietly(contact1,'EmailBouncedDate',Datetime.now());
@@ -4954,7 +4953,7 @@ private class ApexLangUtilsTest {
             ApexLangUtils.getQuietly(contact2,'EmailBouncedDate'));
     }
     
-    private static testmethod void testPutQuietly(){
+    @isTest static void testPutQuietly(){
         //test: global static void putQuietly(SObject sobj, String fieldName, Object value){
         final Account acct = new Account(name='test123');
         System.assertEquals(null,ApexLangUtils.putQuietly(null,null,null));
@@ -4972,7 +4971,7 @@ private class ApexLangUtilsTest {
         System.assertEquals('xyz',ApexLangUtils.getQuietly(acct,'name'));
     }
     
-    private static testmethod void testGetQuietly(){
+    @isTest static void testGetQuietly(){
         //test: global static Object getQuietly(SObject sobj, String fieldName){    
         final Account acct = new Account(name='test123');
         System.assertEquals(null,ApexLangUtils.getQuietly(null,null));
@@ -4986,7 +4985,7 @@ private class ApexLangUtilsTest {
     /* RandomStringApexLangUtilsTest Tests */
 
 
-    /*private static testmethod void testRandom(){
+    /*@isTest static void testRandom(){
         //test: global static String random(Integer count) {
         for(Integer i = -5; i < 5; i++){
             assertRandom(i);
@@ -5006,7 +5005,7 @@ private class ApexLangUtilsTest {
         }
     }*/
 
-    /*private static testmethod void testRandomAscii(){
+    /*@isTest static void testRandomAscii(){
         //test: global static String randomAscii(Integer count) {
         for(Integer i = -5; i < 5; i++){
             assertRandomAscii(i);
@@ -5026,7 +5025,7 @@ private class ApexLangUtilsTest {
         }
     }*/
 
-    private static testmethod void testRandomAlphabetic(){
+    @isTest static void testRandomAlphabetic(){
         //test: global static String randomAlphabetic(Integer count) {
         for(Integer i = -5; i < 5; i++){
             assertRandomAlphabetic(i);
@@ -5046,7 +5045,7 @@ private class ApexLangUtilsTest {
         }
     }
 
-    private static testmethod void testRandomAlphanumeric(){
+    @isTest static void testRandomAlphanumeric(){
         //test: global static String randomAlphanumeric(Integer count) {
         for(Integer i = -5; i < 5; i++){
             assertRandomAlphanumeric(i);
@@ -5066,7 +5065,7 @@ private class ApexLangUtilsTest {
         }
     }
 
-    private static testmethod void testRandomNumeric(){
+    @isTest static void testRandomNumeric(){
         //test: global static String randomNumeric(Integer count) {
         for(Integer i = -5; i < 5; i++){
             assertRandomNumeric(i);
@@ -5086,7 +5085,7 @@ private class ApexLangUtilsTest {
         }
     }
 
-    private static testmethod void testRandomTwoArgs(){
+    @isTest static void testRandomTwoArgs(){
         //test: global static String random(Integer count, String chars) {
         for(Integer i = -5; i < 5; i++){
             assertRandomTwoArgs(i,'abc');
@@ -5109,7 +5108,7 @@ private class ApexLangUtilsTest {
         }
     }
 
-    /*private static testmethod void testRandomThreeArgs(){
+    /*@isTest static void testRandomThreeArgs(){
         //test: global static String random(Integer count, boolean letters, boolean numbers) {
         for(Integer i = -5; i < 5; i++){
             for(Integer j = 0; j < 4; j++){
@@ -5142,7 +5141,7 @@ private class ApexLangUtilsTest {
         }
     }*/
 
-    /*private static testmethod void testRandomFiveArgs(){
+    /*@isTest static void testRandomFiveArgs(){
         //test: global static String random(Integer count, Integer startIndex, Integer endIndex, boolean letters, boolean numbers) {
         for(Integer i = -5; i < 5; i++){
             for(Integer j = 0; j < 4; j++){
@@ -5178,7 +5177,7 @@ private class ApexLangUtilsTest {
         }
     }*/
 
-    /*private static testmethod void testRandomSixArgs(){
+    /*@isTest static void testRandomSixArgs(){
         //test: global static String random(Integer count, Integer startIndex, Integer endIndex, boolean letters, boolean numbers, String chars) {
         for(Integer i = -5; i < 5; i++){
             for(Integer j = 0; j < 4; j++){
@@ -5224,7 +5223,7 @@ private class ApexLangUtilsTest {
     }*/
 
 
-    private static testmethod void testRandomUUID(){
+    @isTest static void testRandomUUID(){
         String actual = ApexLangUtils.randomUUID();
         System.assertNotEquals(null,actual);
         System.assertEquals(36,actual.length());
@@ -5236,7 +5235,7 @@ private class ApexLangUtilsTest {
 	/* MapApexLangUtilsTest Tests */
 
 
-    private static testmethod void testJoinMap(){
+    @isTest static void testJoinMap(){
         //test public static String joinMap(Map<String,String> theMap, String keyValueSeparator, String recordSeparator)
         assertJoinMap(null,null,null,null);
         Map<String,String> theMap = new Map<String,String>();
@@ -5267,14 +5266,14 @@ private class ApexLangUtilsTest {
             + '\') returned ' + actual);
     } 
     
-    /*private static testmethod void testToString(){
+    /*@isTest static void testToString(){
         //test public static String toString(Map<String,String> theMap)
         Map<String,String> theMap = new Map<String,String>();
         theMap.put('xyz','123');
         System.assertEquals('<Map#([xyz=123])>',ApexLangUtils.toString(theMap));
     }*/
 
-    /*private static testmethod void testEquals(){
+    /*@isTest static void testEquals(){
         //test: global static Boolean equals(Map<String,String> map1, Map<String,String> map2)
         Map<String,String> map1 = new Map<String,String>();
         Map<String,String> map2 = new Map<String,String>();
@@ -5304,42 +5303,42 @@ private class ApexLangUtilsTest {
 	/* PageApexLangUtilsTest Tests */
 	
  
-    private static testmethod void testAddConfirm(){
+    @isTest static void testAddConfirm(){
         //test: global static void addConfirm(String message){
         ApexLangUtils.assertNoConfirmMessagesExist();
         ApexLangUtils.addConfirm('test');
         ApexLangUtils.assertConfirmMessagesExist();
     }
 
-    private static testmethod void testAddInfo(){
+    @isTest static void testAddInfo(){
         //test: global static void addInfo(String message){
         ApexLangUtils.assertNoInfoMessagesExist();
         ApexLangUtils.addInfo('test');
         ApexLangUtils.assertInfoMessagesExist();
     }
 
-    private static testmethod void testAddWarning(){
+    @isTest static void testAddWarning(){
         //test: global static void addWarning(String message){
         ApexLangUtils.assertNoWarningMessagesExist();
         ApexLangUtils.addWarning('test');
         ApexLangUtils.assertWarningMessagesExist();
     }
 
-    private static testmethod void testAddError(){
+    @isTest static void testAddError(){
         //test: global static void addError(String message){
         ApexLangUtils.assertNoErrorMessagesExist();
         ApexLangUtils.addError('test');
         ApexLangUtils.assertErrorMessagesExist();
     }
 
-    private static testmethod void testAddFatal(){
+    @isTest static void testAddFatal(){
         //test: global static void addFatal(String message){
         ApexLangUtils.assertNoFatalMessagesExist();
         ApexLangUtils.addFatal('test');
         ApexLangUtils.assertFatalMessagesExist();
     }
 
-    private static testmethod void testRedirect(){
+    @isTest static void testRedirect(){
         //test: global static PageReference redirect(String url){
         PageReference ref = ApexLangUtils.redirect('/abc123');
         System.assertNotEquals(null,ref);
@@ -5347,13 +5346,13 @@ private class ApexLangUtilsTest {
         System.assertEquals(true,ref.getRedirect());
     }
     
-    private static testmethod void testParam(){
+    @isTest static void testParam(){
         //test: global static String param(String param){
         ApexPages.currentPage().getParameters().put('test1','value1');
         System.assertEquals('value1',ApexLangUtils.param('test1'));
     }
     
-    private static testmethod void testMultipleParam(){
+    @isTest static void testMultipleParam(){
         //test: global static String param(String param){
         ApexPages.currentPage().getParameters().put('test1','value1');
         ApexPages.currentPage().getParameters().put('test2','value2');
@@ -5370,14 +5369,14 @@ private class ApexLangUtilsTest {
         System.assert(retValue.containsKey('test5'));
     }
     
-    private static testmethod void testParamTwoArgs(){
+    @isTest static void testParamTwoArgs(){
         //test: global static String param(String param){
         System.assertEquals(null,ApexPages.currentPage().getParameters().get('test1'));
         System.assertEquals('value1',ApexLangUtils.param('test1','value1'));
         System.assertEquals('value1',ApexPages.currentPage().getParameters().get('test1'));
     }
     
-    private static testmethod void testGetErrorMessages(){
+    @isTest static void testGetErrorMessages(){
         //test: global static ApexPages.Message[] getErrorMessages(){
         System.assertEquals(true,ApexLangUtils.getErrorMessages().isEmpty());
         ApexLangUtils.addInfo('testb'); 
@@ -5386,7 +5385,7 @@ private class ApexLangUtilsTest {
         System.assertEquals(false,ApexLangUtils.getErrorMessages().isEmpty());
     }
     
-    private static testmethod void testGetErrorMessagesOnly(){
+    @isTest static void testGetErrorMessagesOnly(){
         //test: global static ApexPages.Message[] getErrorMessagesOnly(){
         ApexLangUtils.addInfo('testb'); 
         System.assertEquals(true,ApexLangUtils.getErrorMessagesOnly().isEmpty());
@@ -5394,7 +5393,7 @@ private class ApexLangUtilsTest {
         System.assertEquals(false,ApexLangUtils.getErrorMessagesOnly().isEmpty());
     }
     
-    private static testmethod void testMessagesToStringNoArg(){
+    @isTest static void testMessagesToStringNoArg(){
         //test: global static String messagesToString(){
         System.assertEquals('{empty}',
             ApexLangUtils.messagesToString());
@@ -5403,7 +5402,7 @@ private class ApexLangUtilsTest {
             ApexLangUtils.messagesToString());
     }
     
-    private static testmethod void testMessagesToStringOneArg(){
+    @isTest static void testMessagesToStringOneArg(){
         //test: global static String messagesToString(ApexPages.Message[] messages){
         System.assertEquals('null',ApexLangUtils.messagesToString(null));
         ApexLangUtils.addError('testb'); 
@@ -5412,7 +5411,7 @@ private class ApexLangUtilsTest {
             ApexLangUtils.messagesToString(ApexLangUtils.getErrorMessages()));
     }
     
-    private static testmethod void testGetMessagesAtLevelScenario1(){
+    @isTest static void testGetMessagesAtLevelScenario1(){
         //test: global static ApexPages.Message[] getMessagesAtLevel(ApexPages.Severity level,Boolean includeParents){
         ApexLangUtils.addInfo('testb'); 
         System.assertEquals(true,ApexLangUtils.getMessagesAtLevel(ApexPages.Severity.ERROR,false).isEmpty());
@@ -5420,19 +5419,19 @@ private class ApexLangUtilsTest {
         System.assertEquals(false,ApexLangUtils.getMessagesAtLevel(ApexPages.Severity.ERROR,false).isEmpty());
     }
 
-    private static testmethod void testGetMessagesAtLevelScenario2(){
+    @isTest static void testGetMessagesAtLevelScenario2(){
         //test: global static ApexPages.Message[] getMessagesAtLevel(ApexPages.Severity level,Boolean includeParents){
         ApexLangUtils.addInfo('testb'); 
         System.assertEquals(true,ApexLangUtils.getMessagesAtLevel(ApexPages.Severity.ERROR,false).isEmpty());
     }
 
-    private static testmethod void testGetMessagesAtLevelScenario3(){
+    @isTest static void testGetMessagesAtLevelScenario3(){
         //test: global static ApexPages.Message[] getMessagesAtLevel(ApexPages.Severity level,Boolean includeParents){
         ApexLangUtils.addInfo('testb'); 
         System.assertEquals(false,ApexLangUtils.getMessagesAtLevel(ApexPages.Severity.ERROR,true).isEmpty());
     }
 
-    private static testmethod void testEncodeVariable(){
+    @isTest static void testEncodeVariable(){
         //test: global static String encodeVariable(String variable){
         assertEncodeVariable(null,'');
         assertEncodeVariable('test123','test123');
@@ -5446,7 +5445,7 @@ private class ApexLangUtilsTest {
     
     
 
-    private static testmethod void testIsMessageAtLevelOrHigher(){
+    @isTest static void testIsMessageAtLevelOrHigher(){
         //test: global static Boolean isMessageAtLevelOrHigher(ApexPages.Message message, ApexPages.Severity level){
         assertIsMessageAtLevelOrHigher(null,null,false);
         assertIsMessageAtLevelOrHigher(ApexPages.severity.INFO,null,false);
@@ -5493,7 +5492,7 @@ private class ApexLangUtilsTest {
 	
 	/* LanguageApexLangUtilsTest Tests */
 
-    private static testmethod void testGetLangCodeByHttpParam(){
+    @isTest static void testGetLangCodeByHttpParam(){
         //test: global static String getLangCodeByHttpParam(){
         System.assertNotEquals('es', ApexLangUtils.getLangCodeByHttpParam());  
         ApexLangUtils.param('l','XXXXXXXX');
@@ -5504,7 +5503,7 @@ private class ApexLangUtilsTest {
         System.assertEquals('nl-nl', ApexLangUtils.getLangCodeByHttpParam()); 
     }
     
-    private static testmethod void testGetLangCodeByBrowser(){
+    @isTest static void testGetLangCodeByBrowser(){
         //test: global static String getLangCodeByBrowser(){
         System.assertNotEquals('es', ApexLangUtils.getLangCodeByBrowser());  
         ApexPages.currentPage().getHeaders().put('Accept-Language','XXXXXXXX');
@@ -5523,13 +5522,13 @@ private class ApexLangUtilsTest {
         System.assertEquals('zh-cn', ApexLangUtils.getLangCodeByBrowser());
     }
     
-    private static testmethod void testGetLangCodeByUser(){
+    @isTest static void testGetLangCodeByUser(){
         //test: global static String getLangCodeByUser(){
         System.assertEquals(UserInfo.getLanguage(), ApexLangUtils.getLangCodeByUser());  
     }
 
 
-    private static testmethod void testGetLangCodeByHttpParamOrIfNullThenBrowser(){
+    @isTest static void testGetLangCodeByHttpParamOrIfNullThenBrowser(){
         //test: global static String getLangCodeByHttpParamOrIfNullThenBrowser(){
         System.assertNotEquals('es', ApexLangUtils.getLangCodeByHttpParamOrIfNullThenBrowser());  
         ApexPages.currentPage().getHeaders().put('Accept-Language','zh');
@@ -5538,14 +5537,14 @@ private class ApexLangUtilsTest {
         System.assertEquals('es', ApexLangUtils.getLangCodeByHttpParamOrIfNullThenBrowser());  
     }
 
-    private static testmethod void testGetLangCodeByHttpParamOrIfNullThenUser(){
+    @isTest static void testGetLangCodeByHttpParamOrIfNullThenUser(){
         //test: global static String getLangCodeByHttpParamOrIfNullThenUser(){
         System.assertEquals(UserInfo.getLanguage(), ApexLangUtils.getLangCodeByHttpParamOrIfNullThenUser());  
         ApexLangUtils.param('l','es');
         System.assertEquals('es', ApexLangUtils.getLangCodeByHttpParamOrIfNullThenUser());  
     }
 
-    private static testmethod void testGetLangCodeByBrowserOrIfNullThenHttpParam(){
+    @isTest static void testGetLangCodeByBrowserOrIfNullThenHttpParam(){
         //test: global static String getLangCodeByBrowserOrIfNullThenHttpParam(){
         System.assertNotEquals('es', ApexLangUtils.getLangCodeByBrowserOrIfNullThenHttpParam());  
         ApexLangUtils.param('l','es');
@@ -5554,7 +5553,7 @@ private class ApexLangUtilsTest {
         System.assertEquals('zh-cn', ApexLangUtils.getLangCodeByBrowserOrIfNullThenHttpParam());  
     }
 
-    private static testmethod void testGetLangCodeByBrowserOrIfNullThenUser(){
+    @isTest static void testGetLangCodeByBrowserOrIfNullThenUser(){
         //test: global static String getLangCodeByBrowserOrIfNullThenUser(){
         System.assertNotEquals('es', ApexLangUtils.getLangCodeByBrowserOrIfNullThenUser());  
         System.assertEquals(UserInfo.getLanguage(), ApexLangUtils.getLangCodeByBrowserOrIfNullThenUser());  
@@ -5562,7 +5561,7 @@ private class ApexLangUtilsTest {
         System.assertEquals('zh-cn', ApexLangUtils.getLangCodeByBrowserOrIfNullThenUser());  
     }
     
-    private static testmethod void testGetLanguageName(){
+    @isTest static void testGetLanguageName(){
     	//test: global String getLanguageName(String displayLanguageCode, String languageCode){
 		
 		//basic tests          
@@ -5581,7 +5580,7 @@ private class ApexLangUtilsTest {
         System.assertEquals('Tsjechisch', ApexLangUtils.getLanguageName('nl','cs'));  
     }
     
-    private static testmethod void testGetAllLanguageSelectOptions(){
+    @isTest static void testGetAllLanguageSelectOptions(){
     	//test: global static List<SelectOption> getAllLanguageSelectOptions(){
     	final List<SelectOption> languages = ApexLangUtils.getAllLanguageSelectOptions();
     	System.assertNotEquals(null,languages);
@@ -5593,7 +5592,7 @@ private class ApexLangUtilsTest {
     	System.assertEquals('Czech',languages.get(2).getLabel());
     }
     
-    private static testmethod void testGetAllLanguageSelectOptions2(){
+    @isTest static void testGetAllLanguageSelectOptions2(){
     	//test: global static List<SelectOption> getAllLanguageSelectOptions(String displayLanguageCode){
     	final List<SelectOption> languages = ApexLangUtils.getAllLanguageSelectOptions('ru');
     	System.assertNotEquals(null,languages);
@@ -5605,7 +5604,7 @@ private class ApexLangUtilsTest {
     	System.assertEquals('Голландский',languages.get(2).getLabel());
     }
     
-    private static testmethod void testgetAllLanguages(){
+    @isTest static void testgetAllLanguages(){
     	//test: global static Map<String,String> getAllLanguages(){
     	final Map<String,String> languages = ApexLangUtils.getAllLanguages();
     	System.assertNotEquals(null,languages);
@@ -5614,7 +5613,7 @@ private class ApexLangUtilsTest {
         System.assertEquals('Italian', languages.get('it'));
 	}    	
     
-    private static testmethod void testgetAllLanguages2(){
+    @isTest static void testgetAllLanguages2(){
     	//test: global static Map<String,String> getAllLanguages(String displayLanguageCode){
     	final Map<String,String> languages = ApexLangUtils.getAllLanguages('ru');
     	System.assertNotEquals(null,languages);
@@ -5672,42 +5671,42 @@ private class ApexLangUtilsTest {
 	/* BooleanApexLangUtilsTest Tests */
 
 
-    private static testmethod void testIsFalse()
+    @isTest static void testIsFalse()
     {
         System.assertEquals(ApexLangUtils.isFalse(true),false);
         System.assertEquals(ApexLangUtils.isFalse(false),true);
         System.assertEquals(ApexLangUtils.isFalse(null),false);
     }
     
-    private static testmethod void testIsNotFalse()
+    @isTest static void testIsNotFalse()
     {
         System.assertEquals(ApexLangUtils.isNotFalse(true),true);
         System.assertEquals(ApexLangUtils.isNotFalse(false),false);
         System.assertEquals(ApexLangUtils.isNotFalse(null),true);
     }
     
-    private static testmethod void testIsTrue()
+    @isTest static void testIsTrue()
     {
         System.assertEquals(ApexLangUtils.isTrue(true),true);
         System.assertEquals(ApexLangUtils.isTrue(false),false);
         System.assertEquals(ApexLangUtils.isTrue(null),false);
     }
     
-    private static testmethod void testIsNotTrue()
+    @isTest static void testIsNotTrue()
     {
         System.assertEquals(ApexLangUtils.isNotTrue(true),false);
         System.assertEquals(ApexLangUtils.isNotTrue(false),true);
         System.assertEquals(ApexLangUtils.isNotTrue(null),true);
     }
     
-    private static testmethod void testNegate()
+    @isTest static void testNegate()
     {
         System.assertEquals(ApexLangUtils.negate(true),false);
         System.assertEquals(ApexLangUtils.negate(false),true);
         System.assertEquals(ApexLangUtils.negate(null),null);
     }
     
-    private static testmethod void testToBoolanDefaultIfNull()
+    @isTest static void testToBoolanDefaultIfNull()
     {
         System.assertEquals(ApexLangUtils.toBooleanDefaultIfNull(true,false),true);
         System.assertEquals(ApexLangUtils.toBooleanDefaultIfNull(false,false),false);

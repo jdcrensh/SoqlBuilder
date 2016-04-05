@@ -9,10 +9,9 @@
  *      http://www.apache.org/licenses/LICENSE-2.0
  * ============================================================
  */
-@IsTest
-private class IntegerRangeTest {
+@isTest class IntegerRangeTest {
     
-    private static testmethod void testContains(){
+    @isTest static void testContains(){
         assertContains(new IntegerRange(0),0,true);
         assertContains(new IntegerRange(-1,1),-2,false);
         assertContains(new IntegerRange(-1,1),-0,true);
@@ -26,7 +25,7 @@ private class IntegerRangeTest {
             + ').contains(' + aNumber + ') returned ' + actual);
     }
 
-    private static testmethod void testContainsRange(){
+    @isTest static void testContainsRange(){
         assertContainsRange(new IntegerRange(0),new IntegerRange(0),true);
         assertContainsRange(new IntegerRange(0,1),new IntegerRange(0,1),true);
         assertContainsRange(new IntegerRange(1,2),new IntegerRange(4,5),false);
@@ -41,7 +40,7 @@ private class IntegerRangeTest {
             + ').contains(' + (range2==null ? '' : range2.toAString()) + ') returned ' + actual);
     }
 
-    private static testmethod void testOverlaps(){
+    @isTest static void testOverlaps(){
         assertOverlaps(new IntegerRange(0),new IntegerRange(0),true);
         assertOverlaps(new IntegerRange(-1,1),new IntegerRange(0,1),true);
         assertOverlaps(new IntegerRange(-1,1),new IntegerRange(2),false);
@@ -56,7 +55,7 @@ private class IntegerRangeTest {
             + ').overlaps(' + (range2==null ? '' : range2.toAString()) + ') returned ' + actual);
     }
 
-    private static testmethod void testMin(){
+    @isTest static void testMin(){
         assertMin(new IntegerRange(0),0);
         assertMin(new IntegerRange(-1,1),-1);
         assertMin(new IntegerRange(1,-1),-1);
@@ -68,7 +67,7 @@ private class IntegerRangeTest {
             + ').getMinimum() returned ' + actual);
     }
 
-    private static testmethod void testMax(){
+    @isTest static void testMax(){
         assertMax(new IntegerRange(0),0);
         assertMax(new IntegerRange(-1,1),1);
         assertMax(new IntegerRange(1,-1),1);
@@ -80,13 +79,13 @@ private class IntegerRangeTest {
             + ').getMaximum() returned ' + actual);
     }
 
-    private static testmethod void testNullsConstructor1(){
+    @isTest static void testNullsConstructor1(){
         Boolean exceptionCaught = false;
         try{ new IntegerRange(null); }catch(IllegalArgumentException e){ exceptionCaught = true; }
         System.assert(exceptionCaught,'Call to \'new IntegerRange(null)\' did not throw IllegalArgumentException');
     }
     
-    private static testmethod void testNullsConstructor2(){
+    @isTest static void testNullsConstructor2(){
         Boolean exceptionCaught = false;
         try{ new IntegerRange(null,null); }catch(IllegalArgumentException e){ exceptionCaught = true; }
         System.assert(exceptionCaught,'Call to \'new IntegerRange(null,null)\' did not throw IllegalArgumentException');

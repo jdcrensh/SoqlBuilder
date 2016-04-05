@@ -1,7 +1,6 @@
-@IsTest
-private class NotConditionTest {
+@isTest class NotConditionTest {
     
-    private static testmethod void testNot1(){
+    @isTest static void testNot1(){
         System.assertEquals(
             'NOT(((name = \'acme\' AND ispartner = true) OR rating = \'Hot\'))',
             new NotCondition()

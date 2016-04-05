@@ -1,14 +1,14 @@
-global class RandomUtilsTest {
+@isTest class RandomUtilsTest {
 
-    private static testmethod void testNextBoolean(){
+    @isTest static void testNextBoolean(){
     	System.assertNotEquals(null,RandomUtils.nextBoolean());
     }
 
-    private static testmethod void testNextInteger(){
+    @isTest static void testNextInteger(){
         assertNextInteger(ApexLangUtils.MAX_INTEGER_RANGE,true,RandomUtils.nextInteger());
     }
 
-    private static testmethod void testNextInteger_Integer(){
+    @isTest static void testNextInteger_Integer(){
         IntegerRange inputRange = null;
         for(Integer i = -2; i <= 2; i++){
             inputRange = new IntegerRange(0,Math.abs(i));
@@ -16,7 +16,7 @@ global class RandomUtilsTest {
         }
     }
 
-    private static testmethod void testNextInteger_Integer_Boolean(){
+    @isTest static void testNextInteger_Integer_Boolean(){
         IntegerRange inputRange = null;
         for(Integer i = -2; i <= 2; i++){
             inputRange = new IntegerRange(0,Math.abs(i));
@@ -25,7 +25,7 @@ global class RandomUtilsTest {
         }
     }
 
-    private static testmethod void testNextInteger_Integer_Integer(){
+    @isTest static void testNextInteger_Integer_Integer(){
         IntegerRange inputRange = null;
         for(Integer i = -2; i <= 2; i++){
             for(Integer j = -2; j <= 2; j++){
@@ -35,7 +35,7 @@ global class RandomUtilsTest {
         }
     }
 
-    private static testmethod void testNextInteger_Integer_Integer_Boolean(){
+    @isTest static void testNextInteger_Integer_Integer_Boolean(){
         IntegerRange inputRange = null;
         for(Integer i = -2; i <= 2; i++){
             for(Integer j = -2; j <= 2; j++){
@@ -46,7 +46,7 @@ global class RandomUtilsTest {
         }
     }
 
-    private static testmethod void testNextInteger_IntegerRange(){
+    @isTest static void testNextInteger_IntegerRange(){
         IntegerRange inputRange = null;
         for(Integer i = -2; i <= 2; i++){
             for(Integer j = -2; j <= 2; j++){
@@ -56,7 +56,7 @@ global class RandomUtilsTest {
         }
     }
 
-    private static testmethod void testNextInteger_IntegerRange_Boolean(){
+    @isTest static void testNextInteger_IntegerRange_Boolean(){
         IntegerRange inputRange = null;
         for(Integer i = -2; i <= 2; i++){
             for(Integer j = -2; j <= 2; j++){
@@ -67,7 +67,7 @@ global class RandomUtilsTest {
         }
     }
 
-    private static testmethod void testNextInteger_IntegerRange_Boolean_NULL(){
+    @isTest static void testNextInteger_IntegerRange_Boolean_NULL(){
     	final IntegerRange nullRange = null;
     	System.assertEquals(null,RandomUtils.nextInteger(nullRange,true));
     }
@@ -87,11 +87,11 @@ global class RandomUtilsTest {
             'RandomUtils.nextInteger(' + inputRange.toAString() + ',' + inclusive + ') returned ' + actual);
     }
     
-    private static testmethod void testNextLong(){
+    @isTest static void testNextLong(){
         assertNextLong(ApexLangUtils.MAX_LONG_RANGE,true,RandomUtils.nextLong());
     }
 
-    private static testmethod void testNextLong_Long(){
+    @isTest static void testNextLong_Long(){
         LongRange inputRange = null;
         for(Long i = -2; i <= 2; i++){
             inputRange = new LongRange(0,Math.abs(i));
@@ -99,7 +99,7 @@ global class RandomUtilsTest {
         }
     }
 
-    private static testmethod void testNextLong_Long_Boolean(){
+    @isTest static void testNextLong_Long_Boolean(){
         LongRange inputRange = null;
         for(Long i = -2; i <= 2; i++){
             inputRange = new LongRange(0,Math.abs(i));
@@ -108,7 +108,7 @@ global class RandomUtilsTest {
         }
     }
 
-    private static testmethod void testNextLong_Long_Long(){
+    @isTest static void testNextLong_Long_Long(){
         LongRange inputRange = null;
         for(Long i = -2; i <= 2; i++){
             for(Long j = -2; j <= 2; j++){
@@ -118,7 +118,7 @@ global class RandomUtilsTest {
         }
     }
 
-    private static testmethod void testNextLong_Long_Long_Boolean(){
+    @isTest static void testNextLong_Long_Long_Boolean(){
         LongRange inputRange = null;
         for(Long i = -2; i <= 2; i++){
             for(Long j = -2; j <= 2; j++){
@@ -129,7 +129,7 @@ global class RandomUtilsTest {
         }
     }
 
-    private static testmethod void testNextLong_LongRange(){
+    @isTest static void testNextLong_LongRange(){
         LongRange inputRange = null;
         for(Long i = -2; i <= 2; i++){
             for(Long j = -2; j <= 2; j++){
@@ -139,7 +139,7 @@ global class RandomUtilsTest {
         }
     }
 
-    private static testmethod void testNextLong_LongRange_Boolean(){
+    @isTest static void testNextLong_LongRange_Boolean(){
         LongRange inputRange = null;
         for(Long i = -2; i <= 2; i++){
             for(Long j = -2; j <= 2; j++){
@@ -150,7 +150,7 @@ global class RandomUtilsTest {
         }
     }
 
-    private static testmethod void testNextLong_LongRange_Boolean_NULL(){
+    @isTest static void testNextLong_LongRange_Boolean_NULL(){
         final LongRange nullRange = null;
         System.assertEquals(null,RandomUtils.nextLong(nullRange,true));
     }

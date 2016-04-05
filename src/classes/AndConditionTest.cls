@@ -1,15 +1,14 @@
-@IsTest
-private class AndConditionTest {
+@isTest class AndConditionTest {
     
-    private static testmethod void testAndConditionEmpty(){
+    @isTest static void testAndConditionEmpty(){
         System.assertEquals('',new AndCondition().toSoql());   
     }
 
-    private static testmethod void testNestedAndConditionEmpty(){
+    @isTest static void testNestedAndConditionEmpty(){
         System.assertEquals('',new AndCondition().add(new AndCondition()).add(new AndCondition()).toSoql());   
     }
 
-    private static testmethod void testAndConditionWithOneConditionOnly(){
+    @isTest static void testAndConditionWithOneConditionOnly(){
         System.assertEquals(
             'name = \'acme\'',
             new AndCondition()
@@ -17,7 +16,7 @@ private class AndConditionTest {
                 .toSoql());   
     }
 
-    private static testmethod void testTwoFieldConditions(){
+    @isTest static void testTwoFieldConditions(){
         System.assertEquals(
             '(name = \'acme\' AND ispartner = true)',
             new AndCondition()

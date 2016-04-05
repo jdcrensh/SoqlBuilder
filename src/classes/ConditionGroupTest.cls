@@ -1,7 +1,6 @@
-@IsTest
-private class ConditionGroupTest {
+@isTest class ConditionGroupTest {
     
-    private static testmethod void testNesting(){
+    @isTest static void testNesting(){
         System.assertEquals(
             '((name = \'acme\' AND ispartner = true) OR rating = \'Hot\')',
             new OrCondition()

@@ -9,10 +9,9 @@
  *      http://www.apache.org/licenses/LICENSE-2.0
  * ============================================================
  */
-@IsTest
-private class PrimitiveComparatorTest {
+@isTest class PrimitiveComparatorTest {
 
-    private static testmethod void testNulls(){
+    @isTest static void testNulls(){
         String aNull = null;
         Object aNullO = aNull;
         Object xyz = 'xyz';
@@ -20,7 +19,7 @@ private class PrimitiveComparatorTest {
         System.assertEquals(1,(new PrimitiveComparator()).compare(xyz,aNullO));
     }
     
-    private static testmethod void testBlob(){
+    @isTest static void testBlob(){
         Object b1 = Blob.valueOf('123');
         Object b2 = Blob.valueOf('abc');
         Boolean exceptionThrown = false;
@@ -32,7 +31,7 @@ private class PrimitiveComparatorTest {
         System.assert(exceptionThrown);
     }
 
-    private static testmethod void testBoolean(){
+    @isTest static void testBoolean(){
         assertCompareBoolean(false,true,-1);
         assertCompareBoolean(true,true,0);
         assertCompareBoolean(false,false,0);
@@ -40,14 +39,14 @@ private class PrimitiveComparatorTest {
     }
     private static void assertCompareBoolean(Object b1, Object b2, Integer expected){ System.assertEquals(expected,(new PrimitiveComparator()).compare(b1,b2));}
 
-    private static testmethod void testDate(){
+    @isTest static void testDate(){
         assertCompareDate(date.newinstance(1980, 2, 17),date.newinstance(1981, 2, 17),-1);
         assertCompareDate(date.newinstance(1981, 2, 17),date.newinstance(1981, 2, 17),0);
         assertCompareDate(date.newinstance(1981, 2, 17),date.newinstance(1980, 2, 17),1);
     }
     private static void assertCompareDate(Object d1, Object d2, Integer expected){ System.assertEquals(expected,(new PrimitiveComparator()).compare(d1,d2));}
     
-    private static testmethod void testDatetime(){ 
+    @isTest static void testDatetime(){ 
         Object d1 = datetime.newInstance(2008, 12, 1, 12, 30, 1);
         Object d2 = datetime.newInstance(2008, 12, 1, 12, 30, 2);
         assertCompareDatetime(d1,d2,-1);
@@ -56,7 +55,7 @@ private class PrimitiveComparatorTest {
     }
     private static void assertCompareDatetime(Object d1, Object d2, Integer expected){ System.assertEquals(expected,(new PrimitiveComparator()).compare(d1,d2));}
     
-    private static testmethod void testDecimal(){ 
+    @isTest static void testDecimal(){ 
         Decimal d1 = 123.123;
         Decimal d2 = 125.125;
         assertCompareDecimal(d1,d2,-1);
@@ -65,7 +64,7 @@ private class PrimitiveComparatorTest {
     }
     private static void assertCompareDecimal(Object d1, Object d2, Integer expected){ System.assertEquals(expected,(new PrimitiveComparator()).compare(d1,d2));}
     
-    private static testmethod void testDouble(){ 
+    @isTest static void testDouble(){ 
         Double d1 = 123.123;
         Double d2 = 125.125;
         assertCompareDouble(d1,d2,-1);
@@ -74,7 +73,7 @@ private class PrimitiveComparatorTest {
     }
     private static void assertCompareDouble(Object d1, Object d2, Integer expected){ System.assertEquals(expected,(new PrimitiveComparator()).compare(d1,d2));}
     
-    /*private static testmethod void testID(){
+    /*@isTest static void testID(){
         Account a = new Account(name='test1');
         insert a;
         ID i1 = a.id;
@@ -88,7 +87,7 @@ private class PrimitiveComparatorTest {
     private static void assertCompareID(Object i1, Object i2, Integer expected){ System.assertEquals(expected,(new PrimitiveComparator()).compare(i1,i2));}
     */
     
-    private static testmethod void testInteger(){ 
+    @isTest static void testInteger(){ 
         Integer i1 = -10;
         Integer i2 = 15;
         assertCompare(i1,i2,-1);
@@ -97,7 +96,7 @@ private class PrimitiveComparatorTest {
     }
     private static void assertCompare(Object i1, Object i2, Integer expected){ System.assertEquals(expected,(new PrimitiveComparator()).compare(i1,i2));}
     
-    private static testmethod void testLong(){ 
+    @isTest static void testLong(){ 
         Long i1 = -10;
         Long i2 = 15;
         assertCompareLong(i1,i2,-1);
@@ -106,7 +105,7 @@ private class PrimitiveComparatorTest {
     }
     private static void assertCompareLong(Object l1, Object l2, Integer expected){ System.assertEquals(expected,(new PrimitiveComparator()).compare(l1,l2));}
     
-    private static testmethod void testTime(){
+    @isTest static void testTime(){
         Time t1 = Time.newInstance(18, 30, 2, 20);
         Time t2 = Time.newInstance(18, 30, 2, 21);
         assertCompareTime(t1,t2,-1);
@@ -117,7 +116,7 @@ private class PrimitiveComparatorTest {
         System.assertEquals(expected,(new PrimitiveComparator()).compare(t1,t2));
     }
     
-    private static testmethod void testString(){ 
+    @isTest static void testString(){ 
         String s1 = 'abc';
         String s2 = 'def';
         assertCompareString(s1,s2,-1);

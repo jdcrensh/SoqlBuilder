@@ -1,11 +1,10 @@
-@IsTest
-private class OrderByTest {
+@isTest class OrderByTest {
 
-    private static testmethod void testNullFieldName(){
+    @isTest static void testNullFieldName(){
         assertIllegalArgumentThrown(null);
     }
 
-    private static testmethod void testBlankFieldName(){
+    @isTest static void testBlankFieldName(){
         assertIllegalArgumentThrown(' ');
     }
 
@@ -19,7 +18,7 @@ private class OrderByTest {
         System.assert(exceptionCaught == true,'IllegalArgumentException not thrown');
     }
 
-    private static testmethod void testNameOnly(){
+    @isTest static void testNameOnly(){
         final OrderBy orderBy = new OrderBy('name');
         System.assertNotEquals(null,orderBy);
         System.assertEquals(true,orderBy.ascending);
@@ -29,7 +28,7 @@ private class OrderByTest {
         System.assertEquals('name',orderBy.toSoql());
     }
 
-    private static testmethod void testAscendingNullsLast(){
+    @isTest static void testAscendingNullsLast(){
         OrderBy orderBy = new OrderBy('name').ascending().nullsLast();
         System.assertNotEquals(null,orderBy);
         System.assertEquals(true,orderBy.ascending);
@@ -47,7 +46,7 @@ private class OrderByTest {
         System.assertEquals('name ASC NULLS LAST',orderBy.toSoql());
     }
 
-    private static testmethod void testDescendingNullsFirst(){
+    @isTest static void testDescendingNullsFirst(){
         OrderBy orderBy = new OrderBy('name').descending().nullsFirst();
         System.assertNotEquals(null,orderBy);
         System.assertEquals(true,orderBy.descending);
@@ -65,7 +64,7 @@ private class OrderByTest {
         System.assertEquals('name DESC NULLS FIRST',orderBy.toSoql());
     }
 
-    private static testmethod void testAscendingNullsFirst(){
+    @isTest static void testAscendingNullsFirst(){
         OrderBy orderBy = new OrderBy('name').ascending().nullsFirst();
         System.assertNotEquals(null,orderBy);
         System.assertEquals(true,orderBy.ascending);
@@ -83,7 +82,7 @@ private class OrderByTest {
         System.assertEquals('name ASC NULLS FIRST',orderBy.toSoql());
     }
 
-    private static testmethod void testDescendingNullsLast(){
+    @isTest static void testDescendingNullsLast(){
         OrderBy orderBy = new OrderBy('name').descending().nullsLast();
         System.assertNotEquals(null,orderBy);
         System.assertEquals(true,orderBy.descending);
@@ -102,7 +101,7 @@ private class OrderByTest {
     }
 
 
-    private static testmethod void testAscending(){
+    @isTest static void testAscending(){
         OrderBy orderBy = new OrderBy('name').ascending();
         System.assertNotEquals(null,orderBy);
         System.assertEquals(true,orderBy.ascending);
@@ -112,7 +111,7 @@ private class OrderByTest {
         System.assertEquals('name ASC',orderBy.toSoql());
     }
 
-    private static testmethod void testDescending(){
+    @isTest static void testDescending(){
         final OrderBy orderBy = new OrderBy('name').descending();
         System.assertNotEquals(null,orderBy);
         System.assertEquals(true,orderBy.descending);
@@ -122,7 +121,7 @@ private class OrderByTest {
         System.assertEquals('name DESC',orderBy.toSoql());
     }
 
-    private static testmethod void testNullsFirst(){
+    @isTest static void testNullsFirst(){
         final OrderBy orderBy = new OrderBy('name').nullsFirst();
         System.assertNotEquals(null,orderBy);
         System.assertEquals(true,orderBy.ascending);
@@ -132,7 +131,7 @@ private class OrderByTest {
         System.assertEquals('name NULLS FIRST',orderBy.toSoql());
     }
 
-    private static testmethod void testNullsLast(){
+    @isTest static void testNullsLast(){
         final OrderBy orderBy = new OrderBy('name').nullsLast();
         System.assertNotEquals(null,orderBy);
         System.assertEquals(true,orderBy.ascending);

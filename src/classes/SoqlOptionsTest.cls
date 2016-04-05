@@ -1,12 +1,11 @@
-@IsTest
-private class SoqlOptionsTest {
+@isTest class SoqlOptionsTest {
 
-    private static testmethod void testDefault(){
+    @isTest static void testDefault(){
         System.assertEquals(true,SoqlOptions.DEFAULT_OPTIONS.escapeSingleQuotes);
         System.assertEquals(false,SoqlOptions.DEFAULT_OPTIONS.wildcardStringsInLikeOperators);
     }
 
-    private static testmethod void test_escapeSingleQuotes(){
+    @isTest static void test_escapeSingleQuotes(){
         final SoqlOptions options = new SoqlOptions();
         System.assertEquals(true,options.escapeSingleQuotes);
         System.assertEquals(options,options.doNotEscapeSingleQuotes());
@@ -15,7 +14,7 @@ private class SoqlOptionsTest {
         System.assertEquals(true,options.escapeSingleQuotes);
     }
 
-    private static testmethod void test_wildcardStringsInLikeOperators(){
+    @isTest static void test_wildcardStringsInLikeOperators(){
         final SoqlOptions options = new SoqlOptions();
         System.assertEquals(false,options.wildcardStringsInLikeOperators);
         System.assertEquals(options,options.wildcardStringsInLikeOperators());

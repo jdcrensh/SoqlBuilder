@@ -9,10 +9,9 @@
  *      http://www.apache.org/licenses/LICENSE-2.0
  * ============================================================
  */
-@IsTest
-private class SelectOptionComparatorTest {
+@isTest class SelectOptionComparatorTest {
 
-    private static testmethod void testSortOnLabelDescending(){
+    @isTest static void testSortOnLabelDescending(){
         SelectOptionWrapper o1 = new SelectOptionWrapper(new SelectOption('xyz','abc'));
         SelectOptionWrapper o2 = new SelectOptionWrapper(new SelectOption('uvw','def'));
         SelectOptionComparator comp = new SelectOptionComparator();
@@ -39,7 +38,7 @@ private class SelectOptionComparatorTest {
         System.assertEquals(0,comp.compare(o2,o2));
     }
     
-    private static testmethod void testSortOnValueDescending(){
+    @isTest static void testSortOnValueDescending(){
         SelectOptionWrapper o1 = new SelectOptionWrapper(new SelectOption('xyz','abc'));
         SelectOptionWrapper o2 = new SelectOptionWrapper(new SelectOption('uvw','def'));
         SelectOptionComparator comp = new SelectOptionComparator(true,false);
@@ -49,7 +48,7 @@ private class SelectOptionComparatorTest {
         System.assertEquals(0,comp.compare(o2,o2));
     }
     
-    private static testmethod void testSortOnValueAscending(){
+    @isTest static void testSortOnValueAscending(){
         SelectOptionWrapper o1 = new SelectOptionWrapper(new SelectOption('xyz','abc'));
         SelectOptionWrapper o2 = new SelectOptionWrapper(new SelectOption('uvw','def'));
         SelectOptionComparator comp = new SelectOptionComparator(false,false);
@@ -59,7 +58,7 @@ private class SelectOptionComparatorTest {
         System.assertEquals(0,comp.compare(o2,o2));
     }
     
-    private static testmethod void testSortOnLabelAscending(){
+    @isTest static void testSortOnLabelAscending(){
         SelectOptionWrapper o1 = new SelectOptionWrapper(new SelectOption('xyz','abc'));
         SelectOptionWrapper o2 = new SelectOptionWrapper(new SelectOption('uvw','def'));
         SelectOptionComparator comp = new SelectOptionComparator(false,true);
@@ -69,7 +68,7 @@ private class SelectOptionComparatorTest {
         System.assertEquals(0,comp.compare(o2,o2));
     }
     
-    private static testmethod void testNulls(){
+    @isTest static void testNulls(){
         SelectOptionWrapper o1 = new SelectOptionWrapper(new SelectOption('xyz','abc'));
         
         SelectOptionComparator comp = new SelectOptionComparator(true,true);
@@ -81,7 +80,7 @@ private class SelectOptionComparatorTest {
         System.assertEquals(-1,comp.compare(o1,null));
     }
     
-    private static testmethod void testInvalidType(){
+    @isTest static void testInvalidType(){
         Boolean exceptionCaught = false;
         try{
         	(new SelectOptionComparator()).compare(1,1);
@@ -91,7 +90,7 @@ private class SelectOptionComparatorTest {
         System.assert(exceptionCaught==true,'IllegalArgumentException was not thrown');
     }
     
-    private static testmethod void testSortDescendingOnLabel(){
+    @isTest static void testSortDescendingOnLabel(){
     	List<SelectOption> theList = new List<SelectOption>{
     		new SelectOption('XXXXX','ghi')
     		,new SelectOption('XXXXX','jkl')
@@ -110,7 +109,7 @@ private class SelectOptionComparatorTest {
     	System.assertEquals('jkl',theList.get(3).getLabel());
     }
     
-    private static testmethod void testSortAscendingOnLabel(){
+    @isTest static void testSortAscendingOnLabel(){
     	List<SelectOption> theList = new List<SelectOption>{
     		new SelectOption('XXXXX','ghi')
     		,new SelectOption('XXXXX','jkl')
@@ -129,7 +128,7 @@ private class SelectOptionComparatorTest {
     	System.assertEquals('jkl',theList.get(0).getLabel());
     }
 
-    private static testmethod void testSortDescendingOnValue(){
+    @isTest static void testSortDescendingOnValue(){
     	List<SelectOption> theList = new List<SelectOption>{
     		new SelectOption('ghi','XXXXX')
     		,new SelectOption('abc','XXXXX')
@@ -148,7 +147,7 @@ private class SelectOptionComparatorTest {
     	System.assertEquals('jkl',theList.get(3).getValue());
     }
     
-    private static testmethod void testSortAscendingOnValue(){
+    @isTest static void testSortAscendingOnValue(){
     	List<SelectOption> theList = new List<SelectOption>{
     		new SelectOption('ghi','XXXXX')
     		,new SelectOption('abc','XXXXX')

@@ -9,10 +9,9 @@
  *      http://www.apache.org/licenses/LICENSE-2.0
  * ============================================================
  */
-@IsTest
-private class DecimalRangeComparatorTest {
+@isTest class DecimalRangeComparatorTest {
 
-    private static testmethod void testIllegalArgumentExceptionThrown(){
+    @isTest static void testIllegalArgumentExceptionThrown(){
         ObjectComparator drc = new DecimalRangeComparator();
         Boolean exceptionThrown = false;
         try{
@@ -23,7 +22,7 @@ private class DecimalRangeComparatorTest {
         System.assert(exceptionThrown);
     }
 
-    private static testmethod void testCompare(){
+    @isTest static void testCompare(){
         Object r1 = new DecimalRange(1,2);
         Object r2 = new DecimalRange(1.5,1.7);
         ObjectComparator drc = new DecimalRangeComparator();

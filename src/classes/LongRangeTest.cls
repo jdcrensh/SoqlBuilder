@@ -9,10 +9,9 @@
  *      http://www.apache.org/licenses/LICENSE-2.0
  * ============================================================
  */
-@IsTest
-private class LongRangeTest {
+@isTest class LongRangeTest {
     
-    private static testmethod void testContains(){
+    @isTest static void testContains(){
         assertContains(new LongRange(0),0,true);
         assertContains(new LongRange(-1,1),-2,false);
         assertContains(new LongRange(-1,1),-0,true);
@@ -26,7 +25,7 @@ private class LongRangeTest {
             + ').contains(' + aNumber + ') returned ' + actual);
     }
 
-    private static testmethod void testContainsRange(){
+    @isTest static void testContainsRange(){
         assertContainsRange(new LongRange(0),new LongRange(0),true);
         assertContainsRange(new LongRange(0,1),new LongRange(0,1),true);
         assertContainsRange(new LongRange(1,2),new LongRange(4,5),false);
@@ -41,7 +40,7 @@ private class LongRangeTest {
             + ').contains(' + (range2==null ? '' : range2.toAString()) + ') returned ' + actual);
     }
 
-    private static testmethod void testOverlaps(){
+    @isTest static void testOverlaps(){
         assertOverlaps(new LongRange(0),new LongRange(0),true);
         assertOverlaps(new LongRange(-1,1),new LongRange(0,1),true);
         assertOverlaps(new LongRange(-1,1),new LongRange(2),false);
@@ -56,7 +55,7 @@ private class LongRangeTest {
             + ').overlaps(' + (range2==null ? '' : range2.toAString()) + ') returned ' + actual);
     }
 
-    private static testmethod void testMin(){
+    @isTest static void testMin(){
         assertMin(new LongRange(0),0);
         assertMin(new LongRange(-1,1),-1);
         assertMin(new LongRange(1,-1),-1);
@@ -68,7 +67,7 @@ private class LongRangeTest {
             + ').getMinimum() returned ' + actual);
     }
 
-    private static testmethod void testMax(){
+    @isTest static void testMax(){
         assertMax(new LongRange(0),0);
         assertMax(new LongRange(-1,1),1);
         assertMax(new LongRange(1,-1),1);
@@ -80,13 +79,13 @@ private class LongRangeTest {
             + ').getMaximum() returned ' + actual);
     }
     
-    private static testmethod void testNullsConstructor1(){
+    @isTest static void testNullsConstructor1(){
         Boolean exceptionCaught = false;
         try{ new LongRange(null); }catch(IllegalArgumentException e){ exceptionCaught = true; }
         System.assert(exceptionCaught,'Call to \'new LongRange(null)\' did not throw IllegalArgumentException');
     }
     
-    private static testmethod void testNullsConstructor2(){
+    @isTest static void testNullsConstructor2(){
         Boolean exceptionCaught = false;
         try{ new LongRange(null,null); }catch(IllegalArgumentException e){ exceptionCaught = true; }
         System.assert(exceptionCaught,'Call to \'new LongRange(null,null)\' did not throw IllegalArgumentException');

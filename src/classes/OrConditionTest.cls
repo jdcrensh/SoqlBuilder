@@ -1,15 +1,14 @@
-@IsTest
-private class OrConditionTest {
+@isTest class OrConditionTest {
     
-    private static testmethod void testOrConditionEmpty(){
+    @isTest static void testOrConditionEmpty(){
         System.assertEquals('',new OrCondition().toSoql());   
     }
 
-    private static testmethod void testNestedOrConditionEmpty(){
+    @isTest static void testNestedOrConditionEmpty(){
         System.assertEquals('',new OrCondition().add(new OrCondition()).add(new OrCondition()).toSoql());   
     }
 
-    private static testmethod void testOrConditionWithOneConditionOnly(){
+    @isTest static void testOrConditionWithOneConditionOnly(){
         System.assertEquals(
             'name = \'acme\'',
             new OrCondition()
@@ -17,7 +16,7 @@ private class OrConditionTest {
                 .toSoql());   
     }
 
-    private static testmethod void testTwoFieldConditions(){
+    @isTest static void testTwoFieldConditions(){
         System.assertEquals(
             '(name = \'acme\' OR ispartner = true)',
             new OrCondition()
